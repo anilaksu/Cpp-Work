@@ -1,0 +1,5 @@
+﻿  main.cpp
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\CppIOOperators\InputOutputOperators\InputOutputOperators\main.cpp(130,11): warning C4244: '=': 'double' - 'float' dönüşümü; veri kaybı olabilir
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\CppIOOperators\InputOutputOperators\InputOutputOperators\main.cpp(131,28): warning C4244: '=': 'double' - 'float' dönüşümü; veri kaybı olabilir
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\CppIOOperators\InputOutputOperators\InputOutputOperators\main.cpp(132,18): warning C4244: '=': 'double' - 'float' dönüşümü; veri kaybı olabilir
+  InputOutputOperators.vcxproj -> C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\CppIOOperators\InputOutputOperators\x64\Debug\InputOutputOperators.exe

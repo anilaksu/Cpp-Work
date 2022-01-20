@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\Anil Aksu\Dropbox\Software and Programming Documents\Codes\CppCodes\Bits and Structs\Bits\Bits\DeckOFCards.h(65,42): warning C4267: 'argument': conversion from 'size_t' to 'unsigned int', possible loss of data
+  Bits.vcxproj -> C:\Users\Anil Aksu\Dropbox\Software and Programming Documents\Codes\CppCodes\Bits and Structs\Bits\x64\Debug\Bits.exe

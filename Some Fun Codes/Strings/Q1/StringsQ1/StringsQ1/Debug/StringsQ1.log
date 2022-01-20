@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Strings\Q1\StringsQ1\StringsQ1\main.cpp(19,9): warning C4101: 'DummyPrices': yerel değişken başvurusu kaldırıldı
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Strings\Q1\StringsQ1\StringsQ1\main.cpp(20,9): warning C4101: 'MaxUnit': yerel değişken başvurusu kaldırıldı
+  StringsQ1.vcxproj -> C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Strings\Q1\StringsQ1\Debug\StringsQ1.exe

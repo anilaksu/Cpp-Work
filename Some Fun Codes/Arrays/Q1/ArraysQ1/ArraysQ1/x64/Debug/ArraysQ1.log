@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Arrays\Q1\ArraysQ1\ArraysQ1\main.cpp(16,27): warning C4267: 'başlatılıyor': 'size_t' - 'int' dönüşümü; veri kaybı olabilir
+C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Arrays\Q1\ArraysQ1\ArraysQ1\main.cpp(16,27): warning C4267: 'başlatılıyor': 'size_t' - 'const int' dönüşümü; veri kaybı olabilir
+  ArraysQ1.vcxproj -> C:\Users\anila\Dropbox\Software and Programming Documents\Codes\CppCodes\Roblox Interview Practice\Arrays\Q1\ArraysQ1\x64\Debug\ArraysQ1.exe

@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Anil Aksu\Dropbox\Software and Programming Documents\Codes\CppCodes\Arrays and Vectors\ArrayVectorOperations\ArrayVectorOperations\Invoice.h(35,12): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Anil Aksu\Dropbox\Software and Programming Documents\Codes\CppCodes\Arrays and Vectors\ArrayVectorOperations\ArrayVectorOperations\Invoice.h(70,44): warning C4244: 'return': conversion from 'double' to 'int', possible loss of data
+  ArrayVectorOperations.vcxproj -> C:\Users\Anil Aksu\Dropbox\Software and Programming Documents\Codes\CppCodes\Arrays and Vectors\ArrayVectorOperations\Debug\ArrayVectorOperations.exe
