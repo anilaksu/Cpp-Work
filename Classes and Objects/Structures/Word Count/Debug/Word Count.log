@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\Structures\Word Count\main.cpp(92,24): warning C4101: 'point3': unreferenced local variable
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\Structures\Word Count\main.cpp(95,7): warning C4101: 'EmployeeInitial': unreferenced local variable
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\Structures\Word Count\main.cpp(92,8): warning C4101: 'point1': unreferenced local variable
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\Structures\Word Count\main.cpp(92,16): warning C4101: 'point2': unreferenced local variable
+  Word Count.vcxproj -> C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\Structures\Word Count\Debug\Word Count.exe
