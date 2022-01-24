@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\ClassObjects\Classes.h(56,18): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  ClassObjects.vcxproj -> C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Classes and Objects\ClassObjects\Debug\ClassObjects.exe
