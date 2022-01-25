@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Arrays and Vectors\New Array Operations\main.cpp(106,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Arrays and Vectors\New Array Operations\main.cpp(131,28): warning C4305: 'argument': truncation from 'double' to 'float'
+  New Array Operations.vcxproj -> C:\Users\Anil Aksu\Documents\GitHub\Cpp-Work\Arrays and Vectors\New Array Operations\Debug\New Array Operations.exe
