@@ -20,13 +20,15 @@ T multTwo(T n)
 	return (2 * n);
 }
 
-/* template <class atype> int find(atype* array, atype value, int size)
+template <class T>
+void swaps(T& x, T& y)
 {
-	for (int j = 0; j < size; j++)
-		if (array[j] == value)
-			return j;
-	return -1;
-} */
+	T temp;
+	temp = x;
+	x = y;
+	y = temp;
+}
+
 
 template <class atype, class btype>
 btype find(atype* array, atype value, btype size)
@@ -49,12 +51,23 @@ atype getAverage(atype* array, btype size)
 	return static_cast<atype>(average/size);
 }
 
+template <class atype, class btype>
+atype getMax(atype* array, btype size)
+{
+	atype Max = array[0]; // Here define the average variable
+
+	for (btype j = 1; j < size; j++) //note use of btype
+		if(array[j] > Max)
+			Max = array[j];
+	/* Here we return the maximum element in array */
+	return Max;
+}
 
 
 int main()
 {
 
-	int int1 = -6;
+	int int1 = -6, int2 = 2;
 	long lon1 = -80000L;
 	double dub1 = -10.15;
 	Queue<int> s2; //s1 is object of class Queue<float>
@@ -97,8 +110,8 @@ int main()
 	cout << "\nDoubler template test for float: " << multTwo(2.1) << endl;
 	cout << "Doubler template test for integer: " << multTwo(2) << endl;
 
-	int intArr[] = { 1, 3, 5, 9, 11, 13 }; //array
-	float fltArr[] = { 1.1, 3.1, 5.1, 9.1, 11.1, 13.1 }; //array
+	int intArr[] = { 1, 3, 15, 9, 11, 13 }; //array
+	float fltArr[] = { 1.1, 3.1, 15.1, 9.1, 11.1, 13.1 }; //array
 
 	cout << "Average template test for integer: " << getAverage(intArr, 6) << endl;
 	cout << "Average template test for float: " << getAverage(fltArr, 6) << endl;
@@ -124,6 +137,33 @@ int main()
 		cout << "Exception: Queue Empty" << endl;
 	}
 
+	/* Here we perform a swap operation using template*/
+	swaps(int1, int2);        
+	/* Let's output the swapped values */
+	cout << "int1 value: " << int1 << endl;
+	cout << "int2 value: " << int2 << endl;
+
+	/* Here we test the maximum template*/
+	cout << "Maximum template test for integer: " << getMax(intArr, 6) << endl;
+	cout << "Maximum template test for float: " << getMax(fltArr, 6) << endl;
+
+
+	safearay<int> sa1;
+	safearay<float> sa2;
+
+	for (int j = 0; j < 3; j++) //insert elements
+	{
+		sa1[j] = j * 10; //*left* side of equal sign
+		sa2[j] = float(j * 10.2); //*left* side of equal sign
+	}
+		
+	for (int j = 0; j < 3; j++) //display elements
+	{
+		int temp = sa1[j]; //*right* side of equal sign
+		float temp1 = sa2[j]; //*right* side of equal sign
+		cout << "Element " << j << " is " << temp << endl;
+		cout << "Element " << j << " is " << temp1 << endl;
+	}
 
 	return 0;
 

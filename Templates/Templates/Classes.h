@@ -375,3 +375,21 @@ Type Queue<Type>::pop() //take number off stack
 		throw Empty(); //throw exception
 	return st[current++];
 }
+
+////////////////////////////////////////////////////////////////
+/* Queue Template */
+template <class Type>
+class safearay
+{
+private:
+	Type arr[MAX];
+public:
+	Type& operator [](int n) //note: return by reference
+	{
+		if (n < 0 || n >= MAX)
+		{
+			cout << "\nIndex out of bounds"; exit(1);
+		}
+		return arr[n];
+	}
+};
