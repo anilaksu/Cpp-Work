@@ -6,47 +6,6 @@
 #include "Classes.h"
 
 using namespace std;
-const int MAX = 2;
-
-template <class Type> 
-class Stack {
-private:
-	Type st[MAX]; //stack: array of any type
-	int top; //number of top of stack
-public:
-	/*class Range //exception class for Stack
-	{ //note: empty class body
-	};*/
-
-	class Empty {}; // It specifies the empty exception for the stack class
-	class Full {};  // It specifies the full exception for the stack class
-
-	Stack(); //constructor
-	void push(Type var); //put number on stack
-	Type pop(); //take number off stack
-};
-
-template<class Type>
-Stack<Type>::Stack() //constructor
-{
-	top = -1;
-}
-//--------------------------------------------------------------
-template<class Type>
-void Stack<Type>::push(Type var) //put number on stack
-{
-	if (top >= MAX - 1) //if stack full,
-		throw Full(); //throw exception
-	st[++top] = var;
-}
-//--------------------------------------------------------------
-template<class Type>
-Type Stack<Type>::pop() //take number off stack
-{
-	if (top < 0) //if stack empty,
-		throw Empty(); //throw exception
-	return st[top--];
-}
 
 int main()
 {
@@ -109,6 +68,21 @@ catch (bad_alloc) //exception handler
 delete[] ptr; //deallocate memory
 cout << "\nMemory use is successful.\n";
 
+safearay<float> sa2;
+
+/* Here we test bounds error for safe array */
+try
+{
+	//push 3 integers
+	for (int j = 0; j < 5; j++) //insert elements
+	{
+		sa2[j] = float(j * 10.2); //*left* side of equal sign
+	}
+}
+catch (safearay<float>::BoundsError Bound)
+{
+	cout << "Exception: Input array is out of bounds at: " << Bound.expInd << endl;
+}
 
 	return 0;
 

@@ -377,19 +377,96 @@ Type Queue<Type>::pop() //take number off stack
 }
 
 ////////////////////////////////////////////////////////////////
-/* Queue Template */
+/* Safearay Template */
 template <class Type>
 class safearay
 {
 private:
 	Type arr[MAX];
 public:
+
+	class BoundsError {
+		public:
+			int expInd;
+
+			/* Constructor showing the index */
+			BoundsError(int j) : expInd(j)
+			{	}
+
+	};
+
 	Type& operator [](int n) //note: return by reference
 	{
 		if (n < 0 || n >= MAX)
 		{
-			cout << "\nIndex out of bounds"; exit(1);
+			//cout << "\nIndex out of bounds"; exit(1);
+			throw BoundsError(n);
 		}
 		return arr[n];
 	}
+};
+
+/* Fraction calculator Template */
+template <class atype, class btype, class ctype, class dtype>
+class fraction
+{
+private:
+	atype a;
+	btype b;
+	ctype c;
+	dtype d;
+
+public:
+	fraction(atype a_1, btype a_2, ctype a_3, dtype a_4) : a(a_1), b(a_2), c(a_3), d(a_4)
+	{	}
+	fraction()
+	{	}
+	~fraction()
+	{	}
+	
+	/* Here we enable user to enter values after they define fraction class*/
+	void setValues(atype a_1, btype a_2, ctype a_3, dtype a_4) {
+		a = a_1;
+		b = a_2;
+		c = a_3;
+		d = a_4;
+	}
+
+	/* Here we enable user to output values */
+	void getValues() {
+		cout << "a value is " << a << endl;
+		cout << "b value is " << b << endl;
+		cout << "c value is " << c << endl;
+		cout << "d value is " << d << endl;
+	}
+
+	/* here we define the fraction addition function */
+	float addition() {
+		float res = 0;
+		res = float(a)/float(b) + float(c) / float(d);
+		return res;
+	}
+
+	/* here we define the fraction subtraction function */
+	float subtraction() {
+		float res = 0;
+		res = float(a) / float(b) - float(c) / float(d);
+		return res;
+	}
+
+	/* here we define the fraction multiplication function */
+	float multiplication() {
+		float res = 0;
+		res = (float(a) * float(c))  / (float(b) * float(d));
+		return res;
+	}
+
+	/* here we define the fraction division function */
+	float division() {
+		float res = 0;
+		res = (float(a) * float(d)) / (float(b) * float(c));
+		return res;
+	}
+
+
 };

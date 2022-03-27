@@ -150,6 +150,7 @@ int main()
 
 	safearay<int> sa1;
 	safearay<float> sa2;
+	fraction<int, int, int, int> frac1(1,2,3,4); // Here we defined all inputs as integer type
 
 	for (int j = 0; j < 3; j++) //insert elements
 	{
@@ -164,6 +165,13 @@ int main()
 		cout << "Element " << j << " is " << temp << endl;
 		cout << "Element " << j << " is " << temp1 << endl;
 	}
+
+	/* Here we test fraction class template for its member functions and inputs*/
+	frac1.getValues();
+	cout << "Addition operation with the fraction class: " << frac1.addition() << endl;
+	cout << "Subtraction operation with the fraction class: " << frac1.subtraction() << endl;
+	cout << "Multiplication operation with the fraction class: " << frac1.multiplication() << endl;
+	cout << "Division operation with the fraction class: " << frac1.division() << endl;
 
 	return 0;
 
