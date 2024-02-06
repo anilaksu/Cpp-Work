@@ -135,12 +135,21 @@ int main()
 
 	cout << MY_NAME << endl;
 
-
-	
 	/*
 		User Input
-		Symbolic Constants: Similar to variables, but we can't change their values once they are initialized
 	*/
+
+	int yourAge;
+	string fullName;
+
+	cout << "Please enter your name" << endl;
+	getline(cin, fullName); // It reads until \n 
+
+	cout << "Please enter your age" << endl;
+	cin >> yourAge;			// It reads until a space
+
+	cout << yourAge << endl;
+	cout << fullName << endl;
 
 	return 0;
 }
