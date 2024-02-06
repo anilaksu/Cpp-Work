@@ -109,6 +109,39 @@ int main()
 	cout << areEqual << endl;
 	cout << olderThan21 << endl;
 
+	/*
+		Logical Operators: Use to combine or change boolean variables
+		Logical AND: p && q (binary operator)
+		Logical OR : p || q (binary operator)
+		Logical NOT: !p		(unary  operator)
+	*/
+
+	// Here we use boolean variables we defined before
+	isRaining = true;
+	isWarm = false;
+
+	cout << "And: " << (isRaining && isWarm) << endl;
+	cout << "Or: " << (isRaining || isWarm) << endl;
+	cout << "Not: " << (!isRaining) << endl;
+
+	/*
+		Symbolic Constants and Naming Conventions
+		Symbolic Constants: Similar to variables, but we can't change their values once they are initialized
+		Naming Convention: Constants are written in capital letters with underscore seperating words such as MY_RATE (Snake Casing)
+	*/
+
+	const double MY_PI = 3.14159;
+	const string MY_NAME = "Anil Aksu";
+
+	cout << MY_NAME << endl;
+
+
+	
+	/*
+		User Input
+		Symbolic Constants: Similar to variables, but we can't change their values once they are initialized
+	*/
+
 	return 0;
 }
 
