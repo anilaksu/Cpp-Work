@@ -23,7 +23,7 @@ int main()
 	*/
 
 	/*
-		Most develop assigne variable names using Camel Case convention
+		Most develop assign variable names using Camel Case convention
 	*/
 	int myInt;			       // We declared our integer variable here
 	myInt = 15;				   // We assigned a value to it
@@ -54,7 +54,60 @@ int main()
 		- Operands: The variables or literals that the opertors act upon
 		- Arithmetic operators: Used to perform arithmetic
 	*/
+	 
+	int a = 10;
+	int b = 3;
 
+	/*
+		Here are some built - in arithmetic operators, 
+		however more complex operations are also available in cmath library, which we will cover later
+	*/ 
+
+	int sum = a + b;
+	int difference = a - b;
+	int product = a * b;
+	int quotient = a / b;
+	int remainder = a % b;
+	// Compound operators 
+	int result = 10;
+	int myInteger = 5;
+
+	result += 5; // Here we add 5 to the existing value in result variable
+	result *= 2; // Here we multiply the existing value in result variable with 2
+
+	cout << "Sum = " << sum << endl;
+	cout << "Difference = " << difference << endl;
+	cout << "Product = " << product << endl;
+	cout << "Quotient = " << quotient << endl;
+	cout << "Remainder = " << remainder << endl;
+	cout << "Result = " << result << endl;
+
+	myInteger++;     // We increment myInt by 1
+	cout << myInteger << endl;
+	myInteger--;     // We decrement myInt by 1
+	cout << myInteger << endl;
+
+	/*
+		Relational Operators: Retunrs Boolean values and help us make decisions
+		>	greater than
+		>=  greater than or equal to
+		<	less than
+		<=  less than or equal to
+		==  equal to
+		!=  not equal to 
+	*/
+
+	cout << boolalpha; // Here we set boolean operators as True or False instead of 1 or 0
+
+	int c = 15;
+	int d = 20;
+	bool areEqual = c == d;
+	int age = 21;
+	bool olderThan21 = age >= 21;
+
+	cout << (c < d) << endl;
+	cout << areEqual << endl;
+	cout << olderThan21 << endl;
 
 	return 0;
 }
