@@ -139,17 +139,96 @@ int main()
 		User Input
 	*/
 
-	int yourAge;
 	string fullName;
+	string location;
+	int  initialScore;
 
 	cout << "Please enter your name" << endl;
 	getline(cin, fullName); // It reads until \n 
 
-	cout << "Please enter your age" << endl;
-	cin >> yourAge;			// It reads until a space
+	cout << "Please enter your location" << endl;
+	getline(cin, location); // It reads until \n 
 
-	cout << yourAge << endl;
+	cout << "Please enter your initial score between 0 and 100" << endl;
+	cin >> initialScore;			// It reads until a space
+
+	
 	cout << fullName << endl;
+	cout << location << endl;
+	cout << initialScore << endl;
+
+	/*
+		Mini Project 1: Average of Three
+		- Prompt user for three doubles (num1, num2, num3)
+		- Calculate the mean of three doubles
+	*/
+
+	double num1, num2, num3;  // User entered doubles
+	double mean;              // Mean of manually entered 3 doubles
+
+	cout << "Enter the three doubles" << endl;
+	cin >> num1;
+	cin >> num2;
+	cin >> num3;
+
+	mean = (num1 + num2 + num3) / 3.;
+
+	cout << "The mean of 3 doubles is :" << mean << endl;
+
+	/*
+		Mini Project 1: MadLibs Clone
+		- Prompt user for strings:
+			+ adjective1
+			+ girlsName
+			+ adjective2
+			+ occupation1
+			+ placeName
+			+ clothing
+			+ hobby
+			+ adjective3
+			+ occupation2
+			+ boysName
+			+ mansName
+			+ mansName
+		- Display in the story:
+			+ There once was a ADJECTIVE1 girl named GIRLSNAME who was
+			a ADJECTIVE2 OCCUPATION1 in the Kingdom of PLACENAME. She 
+			loved to wear CLOTHING and HOBBY. She wanted to marry the
+			ADJECTIVE3 OCCUPATION2 named BOYSNAME but her father, King 
+			MANSNAME forbid her from seeing him
+	*/
+
+	string adjective1, girlsName, adjective2, occupation1;
+	string placeName, clothing, hobby, adjective3, occupation2;
+	string boysName, mansName;
+
+	cout << "Please enter an adjective" << endl;
+	cin >> adjective1;
+	cout << "Please enter the girl's name" << endl;
+	cin >> girlsName;
+	cout << "Please enter another adjective" << endl;
+	cin >> adjective2;
+	cout << "Please enter an occupation" << endl;
+	cin >> occupation1;
+	cout << "Please enter a place name" << endl;
+	cin >> placeName;
+	cout << "Please enter a cloth" << endl;
+	cin >> clothing;
+	cout << "Please enter a hobby" << endl;
+	cin >> hobby;
+	cout << "Please enter another adjective" << endl;
+	cin >> adjective3;
+	cout << "Please enter another occupation" << endl;
+	cin >> occupation2;
+	cout << "Please enter a boy's name" << endl;
+	cin >> boysName;
+	cout << "Please enter a man's name" << endl;
+	cin >> mansName;
+
+	cout << "There once was a " << adjective1 << " girl named " << girlsName << "\nwho was a "
+		 << adjective2 << " " << occupation1 << " in the Kingdom of " << placeName << ". She loved to wear\n" 
+		 << clothing << " and " << hobby << ". She wanted to marry the " << adjective3 << " " << occupation2 << " named\n" 
+		 << boysName << " but her father, King " << mansName << " forbid her from seeing him" << endl;
 
 	return 0;
 }
