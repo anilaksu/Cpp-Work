@@ -237,6 +237,8 @@ int main()
 	int numJams;  // # of jams the user wants
 	int totalCost;// Total cost of the user's selection
 
+	cout << "Mini Project 1: Jam of the Month Club" << endl;
+
 	cout << "Please enter the package you want" << endl;
 	cin >> package;
 	cout << "Please enter how many jams you want" << endl;
@@ -270,6 +272,8 @@ int main()
 		- Print out whether each integer is odd or even such as "___ is odd" or "___ is even"
 	*/
 
+	cout << "Mini Project 2: Odds and Evens" << endl;
+
 	for (int i = 1; i <= 50; i++) {
 		if (i % 2 == 0) {
 			cout << i << " is even" << endl;
@@ -279,5 +283,49 @@ int main()
 			cout << i << " is odd" << endl;
 		}
 	}
+
+	/*
+		Mini Project 3: Guess the number
+		- The computer will randomly select an integer between 1 and 100 (inclusive)
+		- Four possibilities
+			+ If the user guesses correctly, print "Congratulations! You guessed the number and the program exits
+			+ If the user selects a number too low, print out "Your guess is too low!"
+			+ If the user selects a number too high print out "Your guess is too high"
+			+ If the user selects a number out of the range, tell to pick between 1 and 100
+	*/
+
+	cout << "Mini Project 3: Guess the number" << endl;
+
+	srand(time(nullptr));		// Here we seed the random number generator
+
+	int randomNumber = rand() % 100 +1;		// randomNumber will be >= 1 and <= 100
+	int guess;								// User's guess
+	int numGuess = 1;					    // Number of guesses
+	bool correct = false;					// Here we denote if the guess is correct or not with boolean variable 
+
+
+	while(!correct)
+	{
+		cout << "Please choose a number between 1 and 100" << endl;
+		cin >> guess;
+
+		if (guess == randomNumber) {
+			cout << "Congratulations! You guessed the number in " << numGuess << " trials" << endl;
+			correct = true;
+		}
+		else if (guess < randomNumber) {
+			cout << "Your guess is too low! Guess again" << endl;
+		}
+		else if (guess > randomNumber) {
+			cout << "Your guess is too high! Guess again" << endl;
+		}
+		else
+		{
+			cout << "Your guess is out of range! Pick a number between 1 and 100" << endl;
+		}
+		numGuess++; // Here we increment number of guesses for each guess
+	}
+
+
 	return 0;
 }
