@@ -263,5 +263,21 @@ int main()
 		cout << "You have entered an invalid package. Try again" << endl;
 	}
 
+	/*
+		Mini Project 2: Odds and Evens
+		- Loop through integers 0 to 50 (inclusive)
+		- They get a certain number of there per month, and extras on top of that cost more
+		- Print out whether each integer is odd or even such as "___ is odd" or "___ is even"
+	*/
+
+	for (int i = 1; i <= 50; i++) {
+		if (i % 2 == 0) {
+			cout << i << " is even" << endl;
+		}
+		else
+		{
+			cout << i << " is odd" << endl;
+		}
+	}
 	return 0;
 }
