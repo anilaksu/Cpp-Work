@@ -6,6 +6,8 @@
 #include <string>
 #include <cstdlib> // Here we use this library to generate random numbers
 #include <ctime>
+#include <algorithm> // Here we use it to call max() function
+
 using namespace std;
 
 int main()
@@ -212,8 +214,54 @@ int main()
 	
 	/*
 		Mini Project 1: Jam of the Month Club
+		- Users join a club offering jams, jellies, and preserves
+		- They get a certain number of there per month, and extras on top of that cost more
+		- You should first prompt the user for which package they have from the following:
+			+ Package A:
+				- $8/month
+				- Includes 2 jams per month
+				- Each additional jam on the 2 is $5 each
+			+ Package B:
+				- $12/month
+				- Includes 4 jams per month
+				- Each additional jam on the 4 is $4 each
+			+ Package C:
+				- $15/month
+				- Includes 6 jams per month
+				- Each additional jam on the 6 is $3 each
+		- You should secondly prompt the user for how many jams they purchased this month in total
+		- Finally, the program should return their total cost
 	*/
 
+	char package; // Package that the user picks
+	int numJams;  // # of jams the user wants
+	int totalCost;// Total cost of the user's selection
+
+	cout << "Please enter the package you want" << endl;
+	cin >> package;
+	cout << "Please enter how many jams you want" << endl;
+	cin >> numJams;
+
+	switch (package)
+	{
+	case 'A':
+	case 'a':
+		totalCost = 8 + max(numJams - 2, 0) * 5;
+		cout << "Your total cost is $" << totalCost << endl;
+		break;
+	case 'B':
+	case 'b':
+		totalCost = 12 + max(numJams - 4, 0) * 4;
+		cout << "Your total cost is $" << totalCost << endl;
+		break;
+	case 'C':
+	case 'c':
+		totalCost = 15 + max(numJams - 6, 0) * 3;
+		cout << "Your total cost is $" << totalCost << endl;
+		break;
+	default:
+		cout << "You have entered an invalid package. Try again" << endl;
+	}
 
 	return 0;
 }
