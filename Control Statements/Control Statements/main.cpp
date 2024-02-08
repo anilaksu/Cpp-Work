@@ -4,6 +4,8 @@
 
 #include <iostream>
 #include <string>
+#include <cstdlib> // Here we use this library to generate random numbers
+#include <ctime>
 using namespace std;
 
 int main()
@@ -187,8 +189,31 @@ int main()
 	}
 
 	/*
-		Random Numbers
+		Random Numbers: Technically pseudo-random numbers
 	*/
+
+	srand(time(nullptr));		// Here we seed the random number generator
+
+	int val1 = rand() % 10;		// val1 will be >= 0 and < 10
+
+	// shift it
+	int val2 = rand() % 10 + 1; // val1 will be >= 1 and <= 10
+
+	cout << "Random numbers between 1 and 10" << endl;
+	cout << val1 << endl;
+	cout << val2 << endl;
+
+	// Die throw for 10 times
+	cout << "Die throm for 10 times" << endl;
+	for (int i = 1; i <= 10; i++) {
+		val1 = rand() % 6 + 1; // val1 will be >= 1 and <= 6
+		cout << val1 << endl;
+	}
+	
+	/*
+		Mini Project 1: Jam of the Month Club
+	*/
+
 
 	return 0;
 }
