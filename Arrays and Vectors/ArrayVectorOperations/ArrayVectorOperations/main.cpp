@@ -164,7 +164,7 @@ int main() {
 	/*
 		Mini-Project 1: Array Data
 		- Read five integers into the array
-		- Loop through the array of integers, and print twice
+		- Loop through the array of integers, and print double the amount
 	*/
 
 
@@ -178,9 +178,62 @@ int main() {
 
 	/*
 		Mini-Project 2: Vector Data
-		- Read five integers into the array
-		- Loop through the array of integers, and print twice
+		- Read integers into the vectors
+		- Loop through the array of integers, and print double the amount
 	*/
+
+	cout << " Mini Project: Vector Data " << endl;
+
+	vector<int> vectorData;			// Here we initialize an integer vector
+	string answerContinue = "Yes";  // Here we define stopping parameter user answer
+	int vectorElement;				// Here we create a dummy variable to get the input
+
+	while (answerContinue == "Yes")
+	{
+		cout << "Please enter a value to your string" << endl;
+		cin >> vectorElement;
+		vectorData.push_back(vectorElement);  
+		cout << "Do you want to add a new element to your vector? (Yes/No)" << endl;
+		cin >> answerContinue;
+	}
+
+	// Here we can access each element of array using Range-based for loop
+	for (auto a : vectorData)
+		cout << 2 * a << endl;
+
+	/*
+		Mini-Project 3: Parallel Arrays/Vectors
+		- We will use a technique called parallel arrays ( more correctly, parallel vectors)
+			+ Commmon technique to represent entities at corresponding indices, using more than one array or vector
+		- We will use two vectors
+			+ One for names, one for weigths
+		- Prompt the user for the names and weights of five different people
+		- Print out sentecence for each person, such as "Sally weighs 120 lbs"
+	*/
+
+
+	cout << " Mini Project: Parallel Arrays/Vectors " << endl;
+
+	vector<string> clientNames; // Here we initialize the client names
+	vector<int> clientWeights;  // Here we initialize the client weight
+	string tempName;			// Dummy variable to store the name
+	int tempWeight;             // Dummy variable to store the weight
+
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		cout << "Please enter the client's name" << endl;
+		getline(cin >> ws , tempName); // Usage of std::ws will extract all  the whitespace character
+		
+		cout << "Please enter " << tempName << "'s weight." << endl;
+		cin >> tempWeight;
+		//cin.get(); // Consume newline character
+
+		clientNames.push_back(tempName);
+		clientWeights.push_back(tempWeight);
+	}
+
+	for (int i = 0; i < clientNames.size(); i++)
+		cout << clientNames[i] << " weighs " << clientWeights[i] << " lbs" << endl;
 
 	return 0;
 }
