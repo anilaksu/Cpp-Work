@@ -6,6 +6,7 @@
 #include <string>
 #include "Invoice.h"
 #include <array>		// Here we import array class
+#include <vector>		// Here we import vector class
 #include <iomanip>
 #include <algorithm>
 #include <ctime>
@@ -104,6 +105,78 @@ int main() {
 	for (int a : myIntArray)
 		cout << a << endl;
 
+	/*
+		Vector Class: Sequential container just like the array class
+		- Consists of contiguous memory just like arrays
+		- Are not limited to fixed sizes, but instead can dynamically resize as needed to accomodate more elements
+		- You don't need to specify an initial capacity
+	*/
+
+	cout << "Vector Class" << endl;
+
+	vector<int> someVec;			// Here we initialize an integer vector
+	vector<string> anotherVec(3);   // Here we initialize string vector with an intial size
+
+	// Here we add elements to our integer vector using member function .push_back()
+	someVec.push_back(1);
+	someVec.push_back(2);
+	someVec.push_back(3);
+
+	cout << "someVec size: " << someVec.size() << endl;
+
+	// Here we change the existing element in a vector similar to built-in arrays
+	anotherVec[0] = "John";
+	anotherVec[1] = "Bob";
+	anotherVec[2] = "Sally";
+
+	// Here we both increase the size and add a new element to our string vector
+	anotherVec.push_back("Shannon");
+
+	for (int a : someVec)
+	{
+		cout << a << endl;
+	}
+
+	for (string name : anotherVec) 
+	{
+		cout << name << endl;
+	}
+
+	cout << "Front and back:" << endl;
+	cout << "front: " << anotherVec.front() << endl;
+	cout << "back: " << anotherVec.back() << endl;
+
+	anotherVec.pop_back();							// Removes the last element 
+	anotherVec.insert(anotherVec.begin(), "Don");   // Inserts to the first element
+
+	cout << "now ,front is " << anotherVec.front() << endl;
+	cout << "now, back is " << anotherVec.back() << endl;
+
+	/*
+		Vector Practice Challenge:
+		- Create a vector and add to it the names of five friends, family mements
+		- After adding those five, insert my name as the third element in the vector
+		- Remove the last element and print the elements 
+	*/
+
+	vector<string> entourage;
+	string name;
+
+	cout << "Please enter " << ARRAY_SIZE << " favorite people" << endl;
+
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		getline(cin, name);
+		entourage.push_back(name);
+	}
+
+	entourage.insert(entourage.begin() + 2, "John Baugh"); // Here add John Baugh to third element
+	entourage.pop_back();                                  // Here we remove the last element
+
+	for (auto names : entourage) 
+	{
+		cout << names << endl;
+	}
 
 	///* Array declaration */
 	//const int n = 20;
