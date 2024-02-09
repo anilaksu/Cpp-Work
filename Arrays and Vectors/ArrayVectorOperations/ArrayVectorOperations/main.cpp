@@ -115,26 +115,28 @@ int main() {
 		- Remove the last element and print the elements 
 	*/
 
-	//vector<string> entourage;
-	//string name;
+	cout << " Vector Practice Challenge " << endl;
 
-	//cout << "Please enter " << ARRAY_SIZE << " favorite people" << endl;
+	vector<string> entourage;
+	string name;
 
-	//for (int i = 0; i < ARRAY_SIZE; i++)
-	//{
-	//	getline(cin, name);
-	//	entourage.push_back(name);
-	//}
+	cout << "Please enter " << ARRAY_SIZE << " favorite people" << endl;
 
-	//entourage.insert(entourage.begin() + 2, "John Baugh"); // Here add John Baugh to third element
-	//entourage.pop_back();                                  // Here we remove the last element
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		getline(cin, name);
+		entourage.push_back(name);
+	}
 
-	//cout << " Modified Names Vector " << endl;
+	entourage.insert(entourage.begin() + 2, "John Baugh"); // Here add John Baugh to third element
+	entourage.pop_back();                                  // Here we remove the last element
 
-	//for (auto names : entourage) 
-	//{
-	//	cout << names << endl;
-	//}
+	cout << " Modified Names Vector " << endl;
+
+	for (auto names : entourage) 
+	{
+		cout << names << endl;
+	}
 
 	/*
 		Multi-dimensional Arrays:
@@ -219,6 +221,7 @@ int main() {
 	string tempName;			// Dummy variable to store the name
 	int tempWeight;             // Dummy variable to store the weight
 
+	// Here we getline and cout sequentially which requires >> ws to extract all the white space
 	for (int i = 0; i < ARRAY_SIZE; i++)
 	{
 		cout << "Please enter the client's name" << endl;
