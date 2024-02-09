@@ -4,13 +4,8 @@
 
 #include <iostream>
 #include <string>
-#include "Invoice.h"
 #include <array>		// Here we import array class
 #include <vector>		// Here we import vector class
-#include <iomanip>
-#include <algorithm>
-#include <ctime>
-#include <random>
 
 using namespace std;
 
@@ -168,8 +163,23 @@ int main() {
 
 	/*
 		Mini-Project 1: Array Data
-		- First index represents the row
-		- Second index represents the column
+		- Read five integers into the array
+		- Loop through the array of integers, and print twice
+	*/
+
+
+	cout << " Mini Project: Array Data " << endl;
+
+	array<int, ARRAY_SIZE> arrayData{ 3, 8, 0, 13, 7 }; //Here we initialize our array class
+
+	// Here we can access each element of array using Range-based for loop
+	for (int a : arrayData)
+		cout << 2 * a << endl;
+
+	/*
+		Mini-Project 2: Vector Data
+		- Read five integers into the array
+		- Loop through the array of integers, and print twice
 	*/
 
 	return 0;
