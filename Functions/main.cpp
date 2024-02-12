@@ -27,6 +27,13 @@ int square(int num1);
 void valueChanged1(int someNum);			// It changes pass-by-value
 void valueChanged2(int& someNum);			// It changes pass-by-reference
 void threeTimesN(int input, int& output);	// It uses both pass-by-value and pass-by-reference
+void outputVariableTypes(int aParam);		// It exemplifies several variable types
+void modifyGlobal();
+
+// Global Variables ( Accessible in all functions and main)
+
+double myGlobalDouble = 3.14159;    
+unsigned int counter = 0;
 
 int main() {
 
@@ -84,16 +91,48 @@ int main() {
 			- Store the input multiplied by 3 intothe output variable
 	*/
 
-	/* 
-		Variable Scope and Lifetime
-	*/
-
 	cout << "Please enter an input for threeTimesN function" << endl;
 	cin >> num1;
 
 	threeTimesN(num1, num2); // Here we expect to change num2
 	 
 	cout << "Your output by threeTimesN function is " << num2 << endl;
+
+	/*
+		Variable Scope and Lifetime:
+			- Variable Scope: which parts of the program is a variable accessible?
+			- Lifetime: How long does a specific variable live?
+			- Some variable categories by scope and lifetime
+				+ Global variables: Accessible throughout entire program
+				+ Local variables: Defined and used within the functions, not accessible by main or any other function
+				+ Static local variables: It is only accessible via a function but it is updated not created each time we call the function
+	*/
+
+	cout << " Variable Scope Output " << endl;
+	outputVariableTypes(num2);
+	outputVariableTypes(num2); // Changing the global variable remains permanently
+
+	/*
+		Scope Challenge:
+			- Create a function called modifyGlobal: void and parameterless
+			- Create a global variable counter, and initialize it to 0
+			- Inside modifyGlobal, increment counter by 1
+			- Inside mainb, call modifyGlobal inside a for loop iterate 100 times
+			- Print out the value of counter before and after the for loop
+	*/
+
+	cout << " Scope Challenge " << endl;
+	
+	cout << "Your counter is: " << counter << endl;
+
+	for (int i = 0; i < 100; i++)
+		modifyGlobal();
+
+	cout << "Your counter is: " << counter << endl;
+
+	/*
+		Function Overloading:
+	*/
 
 	return 0;
 }
@@ -142,4 +181,25 @@ void valueChanged2(int& someNum)
 void threeTimesN(int input, int& output)
 {
 	output = 3 * input;
+}
+
+// Both Pass-by-value and Pass-by-reference function
+void outputVariableTypes(int aParam)
+{
+	int myLocalNum = 100;
+	static int myStatic = 500;
+	myStatic++;
+	myLocalNum++;
+	myGlobalDouble++; 
+
+	cout << "My local number is " << myLocalNum << endl;
+	cout << "The parameter is " << aParam << endl;
+	cout << "My global double is " << myGlobalDouble << endl;
+	cout << "My static variable: " << myStatic << endl;
+}
+
+// Scope Challenge Function
+void modifyGlobal()
+{
+	counter++;
 }
