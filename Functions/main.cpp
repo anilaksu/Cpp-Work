@@ -147,8 +147,29 @@ int main() {
 	cout << "name num is " << nameResult << endl;
 
 	/*
-		The <cmath> Library
+		The <cmath> Library: contains many mathematical functions such as:
+			- sqrt for finding the square root
+			- pow for finding a base taken to a power
+			- ceil for rounding a value up to the nearest integer
+			- floor for rounding a value down to the nearest integer
 	*/
+
+	int powResult = pow(2, 3);
+	int sqrtResult = sqrt(25);
+	int ceilResult = ceil(4.2);
+	int floorResult = floor(4.2);
+	int log2Result = log2(512);
+
+	cout << "2^3 is " << powResult << endl;
+	cout << "sqrt of 25 is " << sqrtResult << endl;
+	cout << "ceiling of 4.2 is " << ceilResult << endl;
+	cout << "floor of 4.2 is " << floorResult << endl;
+	cout << "logarithm 2 of 512 is " << log2Result << endl;
+
+	/*
+		Recursion:
+	*/
+
 
 
 	return 0;
