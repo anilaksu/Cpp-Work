@@ -31,9 +31,15 @@ void threeTimesN(int input, int& output);	// It uses both pass-by-value and pass
 void outputVariableTypes(int aParam);		// It exemplifies several variable types
 void modifyGlobal();            
 
+
 // Function prototyes for overloaded functions
 int getResult(int num1, int num2);
 string getResult(string str1, string str2);
+
+// Recursive functions
+void countDownFrom(int num);
+int sumValues(int num);
+int factorial(int num);
 
 // Global Variables ( Accessible in all functions and main)
 
@@ -140,6 +146,7 @@ int main() {
 			- Function signatures consists of thhe name and parameter list of a function
 	*/
 
+	cout << " Function Overloading " << endl;
 	int resultNum = getResult(num1, num2);
 	string nameResult = getResult("Anil", "Aksu");
 
@@ -154,6 +161,7 @@ int main() {
 			- floor for rounding a value down to the nearest integer
 	*/
 
+	cout << " cmath library " << endl;
 	int powResult = pow(2, 3);
 	int sqrtResult = sqrt(25);
 	int ceilResult = ceil(4.2);
@@ -167,9 +175,24 @@ int main() {
 	cout << "logarithm 2 of 512 is " << log2Result << endl;
 
 	/*
-		Recursion:
+		Recursion: When a function calls itself, this is called recursion, which requires:
+			- At least one base case (no recursion in this case)
+			- At least one recursive case (this is whre recursion occurs)
 	*/
 
+	cout << " Recursive Functions " << endl;
+	countDownFrom(5);
+	cout << "Sum up to 10 is " << sumValues(10) << endl;
+
+	/*
+		Factorial via recursion
+	*/
+
+	cout << "10 factorial is " << factorial(5) << endl;
+
+	/*
+		Mini Project 1: Return the Product of Three Parameters
+	*/
 
 
 	return 0;
@@ -254,4 +277,32 @@ int getResult(int num1, int num2)
 string getResult(string str1, string str2)
 {
 	return str1 + " " + str2;
+}
+
+// Recursive functions
+void countDownFrom(int num)
+{
+	if (num >= 0)
+	{
+		cout << num << endl;
+		countDownFrom(num - 1);
+	}
+}
+
+int sumValues(int num)
+{
+	if (num > 0)
+	{
+		return num + sumValues(num - 1);
+	}
+	else
+		return 0;
+}
+
+int factorial(int num)
+{
+	if (num > 1)
+	{
+		return num * factorial(num - 1);
+	}
 }
