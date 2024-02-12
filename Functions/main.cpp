@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include <string>
+#include <cmath>
 using namespace std;
 
 void printSomething() // Function itself
@@ -28,7 +29,11 @@ void valueChanged1(int someNum);			// It changes pass-by-value
 void valueChanged2(int& someNum);			// It changes pass-by-reference
 void threeTimesN(int input, int& output);	// It uses both pass-by-value and pass-by-reference
 void outputVariableTypes(int aParam);		// It exemplifies several variable types
-void modifyGlobal();
+void modifyGlobal();            
+
+// Function prototyes for overloaded functions
+int getResult(int num1, int num2);
+string getResult(string str1, string str2);
 
 // Global Variables ( Accessible in all functions and main)
 
@@ -131,11 +136,26 @@ int main() {
 	cout << "Your counter is: " << counter << endl;
 
 	/*
-		Function Overloading:
+		Function Overloading: the process of creating multiple functions with the same name but different signatures
+			- Function signatures consists of thhe name and parameter list of a function
 	*/
+
+	int resultNum = getResult(num1, num2);
+	string nameResult = getResult("Anil", "Aksu");
+
+	cout << "result num is " << resultNum << endl;
+	cout << "name num is " << nameResult << endl;
+
+	/*
+		The <cmath> Library
+	*/
+
 
 	return 0;
 }
+
+
+
 
 /*
 	We can place functions underneath main, then call it before main
@@ -202,4 +222,15 @@ void outputVariableTypes(int aParam)
 void modifyGlobal()
 {
 	counter++;
+}
+
+// Overloaded functions
+int getResult(int num1, int num2)
+{
+	return num1 * num2;
+}
+
+string getResult(string str1, string str2)
+{
+	return str1 + " " + str2;
 }
