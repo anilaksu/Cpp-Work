@@ -5,6 +5,8 @@ Here we use Camel Case convention, while assigning varaibel names, classes, and 
 
 Some C++ online course material can be found here: https://github.com/profjpbaugh/complete-cpp-developer-course/tree/master
 
+More detailed documentation of libraries can be found at https://cplusplus.com/
+
 Tips:
 - Ctrl + K + C: comments out the code block
 - Ctrl + K + U: uncommments the code block
