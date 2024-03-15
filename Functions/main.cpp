@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <array>		// Here we import array class
+
 using namespace std;
 
 void printSomething() // Function itself
@@ -21,6 +23,12 @@ void printMyName(string yourName); // Function Protype
 /*
 	Here we define functions with int return type
 */
+
+// Global Variables ( Accessible in all functions and main)
+
+double myGlobalDouble = 3.14159;
+unsigned int counter = 0;
+const int ARRAY_SIZE = 5;											// Here we declare our array size
 
 int giveMe10();
 int addThese(int num1, int num2);
@@ -41,10 +49,13 @@ void countDownFrom(int num);
 int sumValues(int num);
 int factorial(int num);
 
-// Global Variables ( Accessible in all functions and main)
+// Project Functions
+int multiply(int num1, int num2, int num3);					  // Product of Three Project
+int sumArray(int array[], int size);						  // Sum of a given array project
+int sumArrayObject(array<int, ARRAY_SIZE> array);			  // Sum of a given array object project
+void sumArrayObject(array<int, ARRAY_SIZE> array, int& sum);  // Sum of a given array object project
 
-double myGlobalDouble = 3.14159;    
-unsigned int counter = 0;
+
 
 int main() {
 
@@ -194,6 +205,40 @@ int main() {
 		Mini Project 1: Return the Product of Three Parameters
 	*/
 
+	int myInt1 = 2, myInt2 = 3, myInt3 = 27;
+
+	cout << "Product of your three integers is " << multiply(myInt1, myInt2, myInt3) << endl;
+
+	/*
+		Mini Project 2: Sum of Built-in Array Elements
+			- Write a function called sumArray:
+				+ Two parameters: An array of integers, the size of the array
+				+ Iterate through the array summing the integers in the array
+	*/
+
+	int myArray[ARRAY_SIZE]{ 13, 3, 98, 27, 11};						// String array
+
+	cout << "Sum of your array is " << sumArray(myArray, ARRAY_SIZE) << endl;
+
+	/*
+		Mini Project 3: Sum of Array Objects Elements
+			- Write a function called sumArray:
+				+ Two parameters: An array of integers, the size of the array
+				+ Iterate through the array summing the integers in the array
+	*/
+
+	array<int, ARRAY_SIZE> myIntArray{ 13, 3, 98, 27, 11 }; //Here we initialize our array class
+
+	cout << "Sum of your array object is " << sumArrayObject(myIntArray) << endl;
+
+
+	/*
+		Mini Project 4: Sum of Array Objects Elements by Reference
+	*/
+	int sum = 0; // Sum of array
+
+	sumArrayObject(myIntArray, sum); // Here we sum the array by reference to sum
+	cout << "Sum of your array object is " << sum << endl;
 
 	return 0;
 }
@@ -305,4 +350,33 @@ int factorial(int num)
 	{
 		return num * factorial(num - 1);
 	}
+}
+
+int multiply(int num1, int num2, int num3 )
+{
+	return num1 * num2 * num3;
+}
+
+int sumArray(int array[], int size)
+{
+	int sum = 0;
+	for (int i = 0; i < size ; i++)
+		sum += array[i];
+
+	return sum;
+}
+
+int sumArrayObject(array<int, ARRAY_SIZE> array)
+{
+	int sum = 0;
+	for (int item : array)
+		sum += item;
+
+	return sum;
+}
+
+void sumArrayObject(array<int, ARRAY_SIZE> array, int& sum)
+{
+	for (int item : array)
+		sum += item;
 }
