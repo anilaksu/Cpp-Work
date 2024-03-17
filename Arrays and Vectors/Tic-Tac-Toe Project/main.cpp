@@ -5,7 +5,6 @@
 			- printCurrentBoard: prints whatever is in the current board
 			- cellAlreadyOccupied: returns true if a given cel is already occupied
 			- getWinner: returns X, O if there is clear winner
-			- isBoardFull: returns if the board is full or not
 */
 
 #include <iostream>
@@ -20,21 +19,41 @@ const int BOARD_SIZE = 3;
 
 //  Functions
 void printCurrentBoard(char board[BOARD_SIZE][BOARD_SIZE]);
-char cellAlreadyOccupied(char cell);
+char cellAlreadyOccupied(char cell);											 // Checks if a given cell is already X or O
+void cellAlreadyOccupied(char board[BOARD_SIZE][BOARD_SIZE], int& i, int& j);    // Checks if a given cell is on the board and empty
+void checkChar(char& yourChar, char& opponentChar);								 // Recursive function to check if the player picked X or O
+char getWinner(char board[BOARD_SIZE][BOARD_SIZE]);								 // Check if there is a winner
 
 int main() {
 	char board[BOARD_SIZE][BOARD_SIZE]; // Here we define our empty board
 	int i,j, num_plays = 0;             // Here we initialize indexes and num_plays to proceed the game
-	while (num_plays < BOARD_SIZE * BOARD_SIZE)
+	char yourChar,opponentChar;			// First players symbol (X or O)
+	
+
+	cout << "Welcome to Tic-Tac-Toe! Please choose X or O!" << endl;
+	cin >> yourChar;
+	checkChar(yourChar, opponentChar);
+
+	printCurrentBoard(board); // Here we output the empty board to guide the players
+	while (num_plays < BOARD_SIZE * BOARD_SIZE && getWinner(board) == ' ')
 	{
+		
 		cout << "Please enter a location for your move on Tic-Tac-Toe board between 1 and 3 both for column and row!" << endl;
 		cin >> i >> j;
+		cellAlreadyOccupied(board, i, j);
 		if (num_plays%2 == 0)
-			board[i-1][j-1] = 'X';
+			board[i-1][j-1] = yourChar;
 		else
-			board[i-1][j-1] = 'O';
+			board[i-1][j-1] = opponentChar;
 
 		printCurrentBoard(board); // Here we output the board to guide the players
+		if (getWinner(board) == ' ')
+			;
+		else
+		{
+			cout << getWinner(board) << " won the game" << endl;
+		}
+			
 		num_plays++;
 	}
 
@@ -53,7 +72,73 @@ void printCurrentBoard(char board[BOARD_SIZE][BOARD_SIZE])
 	}
 }
 
-char cellAlreadyOccupied(char cell)
+char cellAlreadyOccupied(char cell) 
 {
 	return (cell == 'X' || cell == 'O') ? cell : ' ';
+}
+
+void cellAlreadyOccupied(char board[BOARD_SIZE][BOARD_SIZE], int& i, int& j) 
+{
+	if (cellAlreadyOccupied(board[i-1][j-1]) == ' ' && i <= 3 && j <= 3)
+		;
+	else
+	{
+		cout << "Please enter an empty location on the board " << endl;
+		cin >> i >> j;
+		cellAlreadyOccupied(board, i, j);
+
+	}
+}
+void checkChar(char& yourChar, char& opponentChar)
+{
+	if (yourChar == 'X' || yourChar == 'O')
+		if (yourChar == 'X')
+			opponentChar = 'O';
+		else
+			opponentChar = 'X';
+	else
+	{
+		cout << "You entered a wrong character, Please enter X or O!" << endl;
+		cin >> yourChar;
+		checkChar(yourChar, opponentChar);
+	}
+}
+
+char getWinner(char board[BOARD_SIZE][BOARD_SIZE]) {
+	char winner = ' ';
+	
+	if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
+		winner = 'X';
+	else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')
+		winner = 'X';
+	else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')
+		winner = 'X';
+	else if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')
+		winner = 'X';
+	else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X')
+		winner = 'X';
+	else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')
+		winner = 'X';
+	else if (board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
+		winner = 'X';
+	else if (board[0][2] == 'X' && board[1][1] == 'X' && board[2][0] == 'X')
+		winner = 'X';
+	else if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O')
+		winner = 'O';
+	else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O')
+		winner = 'O';
+	else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')
+		winner = 'O';
+	else if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')
+		winner = 'O';
+	else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')
+		winner = 'O';
+	else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')
+		winner = 'O';
+	else if (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')
+		winner = 'O';
+	else if (board[0][2] == 'O' && board[1][1] == 'O' && board[2][0] == 'O')
+		winner = 'O';
+	
+	return winner;
 }
