@@ -1,9 +1,13 @@
 // Specification file
+#define _USE_MATH_DEFINES
 #ifndef HOUSE_H
 #define HOUSE_H
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <math.h>
+
 using namespace std;
 
 class House {
@@ -127,5 +131,64 @@ private: // Private member is only accessible within a function
 	int balance;
 
 }; // end of the class Bank Account
+
+#endif 
+
+#ifndef PIZZA_H
+#define PIZZA_H
+
+class Pizza {
+public:
+
+	// Constructor
+	Pizza(string name, int diameter);
+	// Destructor
+	~Pizza();
+
+	// Member functions
+
+	// Modifier functions
+	void addTopping(string topping);
+
+	// Getter functions access fields in private
+	int getCost() const;
+	void printToppings() const;
+
+private: // Private member is only accessible within a function
+	// Data Members or Fields
+	string name;
+	int cost;
+	int diameter;
+	vector<string> toppings;
+
+}; // end of the class Pizza
+
+#endif 
+
+#ifndef CIRCLE_H
+#define CIRCLE_H
+
+class Circle {
+public:
+
+	// Constructor
+	Circle();
+	Circle(double radius);
+
+	// Member functions
+
+	// Setter functions
+	void setRadius(double radius);
+
+	// Getter functions access fields in private
+	double getRadius() const;
+	double circumference() const;
+	double area() const;
+
+
+private: // Private member is only accessible within a function
+	// Data Members or Fields
+	double radius;
+}; // end of the class Circle
 
 #endif 

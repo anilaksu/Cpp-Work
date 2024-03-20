@@ -3,8 +3,11 @@
 		- Unified Modeling Language (UML) help us to model our classes 
 */
 
+#define _USE_MATH_DEFINES // This allows us to use Pi number
 #include <iostream>
 #include <string>
+#include <vector>
+#include <math.h>
 #include "Classes.h"
 
 using namespace std;
@@ -107,7 +110,53 @@ int main()
 
 	BankAccount myAccount("Anil Aksu", 200);
 
-	myAccount.withdraw(300);
+	myAccount.withdraw(200);
+
+	/*
+		A Pizza Class:
+			- name: string
+			- cost: int
+			- diameter: int
+			- toppings: vector<string>
+			+ Pizza(name :string, cost: int, diameter: int)
+			+ addTopping(topping :string): void (Cheese is a default topping)
+			+ getCost(): int
+			+ printToppings(): void
+	*/
+
+	Pizza myPizza("Pepperoni", 20);
+
+	// Here we add our toppings
+	myPizza.addTopping("Ham");
+	myPizza.addTopping("Jalapeno");
+
+	// Here we output our pizza's cost
+	cout << "Your pizza costs $" << myPizza.getCost() << "." << endl;
+	// Here we output our toppings
+	myPizza.printToppings();
+
+	/*
+		A Circle Class:
+			- radius: double
+			+ Circle()
+			+ Circle(radius: double)
+			+ getRadius(): double 
+			+ setRadius(radius: double): void
+			+ circumference(): double
+			+ area(): double
+	*/
+
+	Circle myCircle;
+
+	cout << "Your circle has " << myCircle.circumference() << " circumference." << endl;
+	cout << "Your circle has " << myCircle.area() << " area." << endl;
+
+	// Here we change the radius
+	myCircle.setRadius(2.5);
+
+	cout << "Your circle has " << myCircle.circumference() << " circumference." << endl;
+	cout << "Your circle has " << myCircle.area() << " area." << endl;
+
 
 	return 0;
 }

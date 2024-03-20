@@ -199,3 +199,75 @@ int BankAccount::getBalance() const
 {
 	return balance;
 }
+
+// Constructor for Pizza Class
+Pizza::Pizza(string name, int diameter) // It is with arguments
+{
+	this->name = name;
+	this->diameter = diameter;
+	this->cost = 10. + this->diameter * 0.2; // It is a cost of pizza based on its size
+	this->toppings.push_back("Cheese");     // Default topping is cheese
+}
+
+
+// Destructor for Pizza Class
+Pizza::~Pizza()
+{
+	cout << "Your " << name << " pizza costs $" << cost << "." << endl;
+}
+
+
+// Modifier functions access fields in private
+void Pizza::addTopping(string topping)
+{
+	this->toppings.push_back(topping);
+	this->cost += 2; // Here we add extra price for each topping
+}
+
+
+// Getter functions access fields in private
+int Pizza::getCost() const
+{
+	return cost;
+}
+
+void Pizza::printToppings() const
+{
+	for (string topping : toppings)
+		cout << "\t" << topping << endl;
+}
+
+
+// Constructor for Circle Class
+Circle::Circle() // It is without arguments
+{
+	this->radius = 1.;
+}
+
+Circle::Circle(double radius) // It is with arguments
+{
+	this->radius = radius;
+}
+
+
+// Setter functions access fields in private
+void Circle::setRadius(double radius)
+{
+	this->radius = radius; 
+}
+
+// Getter functions access fields in private
+double Circle::getRadius() const
+{
+	return radius;
+}
+
+double Circle::circumference() const
+{
+	return 2.* M_PI * radius;
+}
+
+double Circle::area() const
+{
+	return  M_PI * pow(radius, 2.);
+}
