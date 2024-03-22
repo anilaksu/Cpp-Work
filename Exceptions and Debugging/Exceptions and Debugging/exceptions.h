@@ -53,3 +53,17 @@ class AngryCatException : public runtime_error {
 };
 
 #endif
+
+#ifndef WRAP_DRIVE_OVERHEATING_H
+#define WRAP_DRIVE_OVERHEATING_H
+
+class WarpDriveOverheating : public overflow_error {
+public:
+	// Constructor
+	WarpDriveOverheating() : overflow_error("Warp drive has exceeded safe temperature tolerance!")
+	{
+
+	}
+};
+
+#endif

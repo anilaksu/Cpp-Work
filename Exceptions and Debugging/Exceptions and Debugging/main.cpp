@@ -22,6 +22,8 @@ void processPositive(int num);
 void doSomething(int num);
 void feedKitty(int numTreats);
 int imBroken(int num1, int num2);
+char getLetterGrade(int percent);
+void warpTest(int temperature);
 
 int main()
 {
@@ -178,6 +180,12 @@ int main()
 			- Debugging - removing the bugs
 	*/
 
+	/*
+		- Step into: gets into the function	  (F11)
+		- Step over: passes over the function (F10)
+		- Step out:  Get out of the function  (Shift+F11)
+	*/
+
 	int a;
 
 	try
@@ -200,8 +208,55 @@ int main()
 		cout << err.what() << endl;
 	}
 
-	a = imBroken(10, 0);
-	cout << a << endl;
+	/*
+		Mini Project: Throwing and Handling an out_of_range exception
+			- getLetterGrade:
+				+ Between 0-59:	 F
+				+ Between 60-69: D
+				+ Between 70-79: C
+				+ Between 80-89: B
+				+ Between 90-100: D
+				+ Less than 0 OR greater than 200: throw an exception that says "Your percent must be within 0 and 100, inclusive"
+	*/
+
+	int percent;
+
+	try
+	{
+		cout << "Please enter your percent grade between 0 - 100 inclusive" << endl;
+		cin >> percent;
+		cout << "Your letter grade is " << getLetterGrade(percent) << endl;
+	}
+	catch (const out_of_range& err)
+	{
+		cout << err.what() << endl;
+	}
+
+	/*
+		Mini Project: Creating and Using Your Own Exception
+			- Create a new exception class:
+				+ WarpDriveOverheating
+				+ Warp drive must remain 80 degrees Celsius or lower
+				+ Default exception message: "Warp drive has exceeded safe temperature tolerance."
+				+ Only write a single constructor
+				+ Inherit from the overflow_error class
+			- Also, write a warpTest function in main file
+				+ Call it multiple times with different temperatures
+				+ Handle cases within tolerance, and those over 80 degrees
+	*/
+
+	int temperature;
+
+	try
+	{
+		cout << "Please enter your warp temperature" << endl;
+		cin >> temperature;
+		warpTest(temperature);
+	}
+	catch (const WarpDriveOverheating& err)
+	{
+		cout << err.what() << endl;
+	}
 
 	return 0;
 }
@@ -266,4 +321,31 @@ int imBroken(int num1, int num2)
 		throw invalid_argument("Cannot divide by 0");
 
 	return result;
+}
+
+char getLetterGrade(int percent) 
+{
+
+	if (percent >= 0 && percent < 60)
+		return 'F';
+	else if (percent >= 60 && percent < 70)
+		return 'D';
+	else if (percent >= 70 && percent < 80)
+		return 'C';
+	else if (percent >= 80 && percent < 90)
+		return 'B';
+	else if (percent >= 90 && percent <= 100)
+		return 'D';
+	else
+		throw out_of_range("Your percent must be within 0 and 100, inclusive");
+}
+
+void warpTest(int temperature)
+{
+	if (temperature > 80)
+	{
+		throw WarpDriveOverheating();
+	}
+	else
+		cout << "Your warp temperature is within the operational range!" << endl;
 }
