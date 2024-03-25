@@ -18,6 +18,11 @@ void cp2ncd();	// Constant pointer to non constant data
 void ncp2ncd();	// Non constant pointer to non constant data
 void cp2cd();	// Constant pointer to constant data
 
+void noChange(const double* const parameter);	// Just prints out the value
+
+// Array Size
+const int ARRAY_SIZE = 3;
+
 int main()
 {
 	/*
@@ -110,24 +115,144 @@ int main()
 			- Constant pointer to constant data
 	*/
 
+	noConst();
+	cout << endl;
+	cp2ncd();
+	cout << endl;
+	ncp2ncd();
+	cout << endl;
+	cp2cd();
+	cout << endl;
+
+	double* parameter = new double(2.55);
+
+	noChange(parameter);
+	delete parameter;
+	parameter = nullptr;
+
+	/*
+		Mini Project: Dynamically Create Rectangles
+			- Create a regular built-in array of size 3
+			- Make the arrary of Rectangle pointers
+				+ For each element, you need the new keyword
+				+ Create rectangels of different sized ans shapes
+				+ Loop through the array and print out the areas and perimentes
+	*/
+
+	Rectangle* rectPtrs[ARRAY_SIZE];
+
+	rectPtrs[0] = new Rectangle(2.1, 3.2);
+	rectPtrs[1] = new Rectangle(8.1, 6.7);
+	rectPtrs[2] = new Rectangle(2.8, 9.2);
+
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		cout << rectPtrs[i]->perimeter() << endl;
+		cout << rectPtrs[i]->area() << endl;
+	}
+	
+	// now, delete
+	for (int i = 0; i < ARRAY_SIZE; i++)
+	{
+		delete rectPtrs[i];
+		rectPtrs[i] = nullptr;
+	}
+
+	/*
+		Mini Project: Dynamically Create Circles
+			- Ask users for the size of the array
+			- Prompt the user for the radius for each circle, then print out all the circumferences and areas
+	*/
+
+	double radius;  // Dummy radius for an input
+	cout << "Please enter the number of circles you want to create!" << endl;
+	cin >> ARR_SIZE;
+	
+	Circle** circlePtrs = new Circle*[ARR_SIZE]; // Here we use double asteriks to create dynamic array of class
+
+	for (int i = 0; i < ARR_SIZE; i++) {
+		cout << "Please enter a radius for your circle " << endl;
+		cin >> radius;
+		circlePtrs[i] = new Circle(radius);      // Here we initiate each circle pointer with new command
+	}
+
+	for (int i = 0; i < ARR_SIZE; i++)
+	{
+		cout << circlePtrs[i]->circumference() << endl;
+		cout << circlePtrs[i]->area() << endl;
+	}
+
+	// now, delete
+	for (int i = 0; i < ARR_SIZE; i++)
+	{
+		delete circlePtrs[i];
+		circlePtrs[i] = nullptr;
+	}
 
 	return 0;
 }
 
-
+// neither is a constant
 void noConst() {
+	cout << "In noConst" << endl;
+	int* intPtr = new int(50);
 
+	cout << "\torig value : " << *intPtr << endl;
+
+	*intPtr = 100; 
+	cout << "\tchange data : " << *intPtr << endl;
+
+	intPtr = new int(125);
+	cout << "\nnew integer entirely : " << *intPtr << endl;
+
+	delete intPtr; // Avoids memory leak
 }
 
+// pointer is constant (cannot be changed)
+// data is not constant (can be changed)
 void cp2ncd() {
+	cout << "In cp2ncpd" << endl;
 
+	int* const intPtr = new int(100);
+	cout << "\torig value : " << *intPtr << endl;
+
+	*intPtr = 250;
+	cout << "\tchange data : " << *intPtr << endl;
+
+	delete intPtr; // Avoids memory leak
+
+	//intPtr = new int(125); //ERROR! ptr is constant
 }
 
-
+// pointer is not constant (can be changed)
+// data is constant (can not be changed)
 void ncp2ncd() {
+	cout << "In ncp2cd" << endl;
 
+	const int*  intPtr = new int(500); // Here we place const before int*
+	cout << "\torig value : " << *intPtr << endl;
+
+	//*intPtr = 1500; // ERROR! data is constant
+
+	delete intPtr; // Avoids memory leak
+
+	intPtr = new int(125);
+	cout << "\nnew integer entirely : " << *intPtr << endl;
 }
 
+// pointer is constant (can not be changed)
+// data is constant (can not be changed)
 void cp2cd() {
+	cout << "In cp2cd" << endl;
+	
+	const int* const intPtr = new int(500); // Here we place const before int*
+	cout << "\torig value : " << *intPtr << endl;
+	// no changes allowed
+	delete intPtr; // Avoids memory leak
+}
 
+// Simply outputs data
+void noChange(const double* const parameter)
+{
+	cout << *parameter << endl;
 }
