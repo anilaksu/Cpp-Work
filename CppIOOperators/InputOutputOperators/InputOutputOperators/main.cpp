@@ -13,6 +13,7 @@
 #include <iomanip>
 #include <vector>
 #include <string>
+#include "classes.h"
 
 using namespace std;
 
@@ -122,6 +123,62 @@ int main() {
 	nameAgeFile.close();				     // Here we close the file
 	cout << "Done!" << endl;
 
+	/*
+		Mini Project: Read Data from File and Print Statistics
+			- Data should be 0 through 100
+			- From the data, write to console:
+				+ Mininmum Score
+				+ Maximum Score
+				+ Average Score
+			- Program ignores/rejects invalid input (not in 0 to 100)
+	*/
+
+	ifstream scoreFile;		// For reading score file
+
+	vector<int> scores;     // Here we create a vector to store scores in the score file
+	int score;              // Dummy variable to keep scores we read from the file
+	int counter = 0;		// Which keeps track of number of scores
+	int maxScore = 0, minScore = 100; // Here we start maxScore from 0 to compare and replace
+	double avgScore = 0;    
+
+	scoreFile.open("scores.txt"); // Here we open the name file
+
+	cout << "We are reading scores file!" << endl;
+
+	// Here we check if these files exists
+	if (!scoreFile )
+	{
+		cout << "Problem opening score file!" << endl;
+		return 1;
+	}
+
+	while (!scoreFile.eof())
+	{
+		scoreFile >> score; // read each score until EOF
+		if (score >= 0 && score <= 100)
+		{
+			scores.push_back(score);
+			avgScore += score;				 // Here we sum all valid scores then divide them to the count
+			minScore = min(minScore, score); // Here we update the minimum score
+			maxScore = max(maxScore, score); // Here we update the maximum score
+			counter++;
+		}
+		else
+			continue;
+	}
+
+	avgScore = double(avgScore / counter); // Here we divide it to the total score count
+	cout << "Minimum Score is: " << minScore << endl;
+	cout << "Maximum Score is: " << maxScore << endl;
+	cout << "Average Score is: " << avgScore << endl;
+
+	/*
+		Mini Project: Dynamically create rectangles from file
+			- Use the same Rectangle class
+			- Use the rectangles.txt file, in which each line contains length and width
+			- Read data from file and dynamically create Rectangle objects and store their pointers
+			- Print perimeters and areas to an output file
+	*/
 
 	return 0;
 }
