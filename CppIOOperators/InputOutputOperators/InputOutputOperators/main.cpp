@@ -180,6 +180,49 @@ int main() {
 			- Print perimeters and areas to an output file
 	*/
 
+	ifstream rectangleFile;				// For reading rectangle file
+	ofstream rectangleCalculationFile;	// For outputting rectangle calculations
+	vector<Rectangle> Rectangles;      // Here we create a vector to store scores in the rectangle file
+	Rectangle rectPtr;                 // Rectangle pointer to for dummy variable
+
+	double height = 0.0, length = 0.0; // Dummy height and width variable for rectangles 
+	string rectSummary;                // Here we read each line as a message then process it
+
+	//rectPtr = new Rectangle(2.1, 3.2);
+
+	rectangleFile.open("rectangles.txt");								  // Here we open the rectangle file
+	rectangleCalculationFile.open("rectangle_calculations.txt");          // Here we open the output file 
+
+	// Here we check if these files exists
+	if (!rectangleFile)
+	{
+		cout << "Problem opening rectangle file!" << endl;
+		return 1;
+	}
+
+	cout << "We are reading rectangles file!" << endl;
+	while (!rectangleFile.eof())
+	{
+
+		rectangleFile >> length;  // Here we convert the first element into height
+		rectangleFile >> height;  // Here we convert the second element into height
+			
+		rectPtr.setHeight(length);   // Here we store it in Rectangle Pointer
+		rectPtr.setHeight(height);   // Here we store it in Rectangle Pointer
+		Rectangles.push_back(rectPtr);             // Here we add it to rectangles vector
+
+		cout << "Rectangle Area is " << Rectangles.back().area() <<
+			" and Rectangle Perimeter is " << Rectangles.back().perimeter() << endl;
+	
+	}
+
+	// We output the calculation data
+	for (int i = 0; i < Rectangles.size(); i++)
+	{
+		rectangleCalculationFile << "Rectangle Area is " << Rectangles[i].area() <<
+			" and Rectangle Perimeter is " << Rectangles[i].perimeter() << endl;
+	}
+
 	return 0;
 }
 

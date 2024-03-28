@@ -17,7 +17,7 @@ Rectangle::Rectangle(double height, double width) // It is with arguments
 // Destructor for Rectangle Class
 Rectangle::~Rectangle()
 {
-	cout << "The rectangle is " << height << " by " << width << "." << endl;
+	;
 }
 
 // Setter functions sets fields in private
