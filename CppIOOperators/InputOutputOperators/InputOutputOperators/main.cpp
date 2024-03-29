@@ -19,6 +19,7 @@ using namespace std;
 
 // Function prototypes
 void printFormatted(ofstream& outfile, int highNum);
+void printRectangles(ofstream& outfile, vector<Rectangle*> Rectangles);
 
 int main() {
 
@@ -182,8 +183,8 @@ int main() {
 
 	ifstream rectangleFile;				// For reading rectangle file
 	ofstream rectangleCalculationFile;	// For outputting rectangle calculations
-	vector<Rectangle> Rectangles;      // Here we create a vector to store scores in the rectangle file
-	Rectangle rectPtr;                 // Rectangle pointer to for dummy variable
+	vector<Rectangle*> Rectangles;      // Here we create a vector to store scores in the rectangle file
+	Rectangle* rectPtr;                 // Rectangle pointer to for dummy variable
 
 	double height = 0.0, length = 0.0; // Dummy height and width variable for rectangles 
 	string rectSummary;                // Here we read each line as a message then process it
@@ -206,22 +207,27 @@ int main() {
 
 		rectangleFile >> length;  // Here we convert the first element into height
 		rectangleFile >> height;  // Here we convert the second element into height
-			
-		rectPtr.setHeight(length);   // Here we store it in Rectangle Pointer
-		rectPtr.setHeight(height);   // Here we store it in Rectangle Pointer
+		
+		rectPtr = new Rectangle(length, height);   // Here we assign a new memory location to rectangle pointer
 		Rectangles.push_back(rectPtr);             // Here we add it to rectangles vector
 
-		cout << "Rectangle Area is " << Rectangles.back().area() <<
-			" and Rectangle Perimeter is " << Rectangles.back().perimeter() << endl;
-	
+		cout << "Rectangle Area is " << Rectangles.back()->area() <<
+			" and Rectangle Perimeter is " << Rectangles.back()->perimeter() << endl;
 	}
 
-	// We output the calculation data
-	for (int i = 0; i < Rectangles.size(); i++)
+	/*
+		Here we output our calculations before deleting pointers 
+		so that we don't lose our memory location
+	*/ 
+	printRectangles(rectangleCalculationFile, Rectangles); 
+
+	// Now we delete our pointers to free up memory space
+	for (auto rect : Rectangles)
 	{
-		rectangleCalculationFile << "Rectangle Area is " << Rectangles[i].area() <<
-			" and Rectangle Perimeter is " << Rectangles[i].perimeter() << endl;
+		delete rect;
 	}
+	Rectangles.clear();
+
 
 	return 0;
 }
@@ -235,4 +241,15 @@ void printFormatted(ofstream& outfile, int highNum)
 		cout << setw(12) << setprecision(2) << (i * 5.7575)
 			<< setw(12) << setprecision(3) << (i * 3.14159) << endl; // Here we write to the console
 	}
+}
+
+void printRectangles(ofstream& outfile, vector<Rectangle*> Rectangles)
+{
+	// We output the calculation data
+	for (Rectangle* rect : Rectangles)
+	{
+		outfile << "Rectangle Area is " << rect->area() <<
+			" and Rectangle Perimeter is " << rect->perimeter() << endl;
+	}
+
 }
