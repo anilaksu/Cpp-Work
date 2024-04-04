@@ -49,3 +49,28 @@ double Rectangle::perimeter() const
 {
 	return 2 * (height + width);
 }
+
+
+// Setter functions for ItemFrequency Class
+void ItemFrequencies::getItem(string item) {
+
+	int index = 0;
+
+	if (find(this->itemList.begin(), this->itemList.end(), item) != this->itemList.end()) {
+		/* item list contains the given item */
+		index = find(this->itemList.begin(), this->itemList.end(), item) - this->itemList.begin();
+		this->itemFrequency[index]++; // Here we increase the count
+	}
+	else {
+		/* item list does not contain the given item */
+		this->itemList.push_back(item);   // Here we add the item 
+		this->itemFrequency.push_back(1); // Here we add 1 for the first item
+	}
+}
+
+// Setter functions for ItemFrequency Class
+void ItemFrequencies::getItemFrequncyList() const {
+
+	for (int i = 0; i < this->itemList.size(); i++)
+		cout << setw(12)  << this->itemList[i] << setw(12) << this->itemFrequency[i] << endl;
+}

@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <vector>
+#include <algorithm>
+#include <iomanip>
 
 using namespace std;
 
@@ -30,6 +33,30 @@ private: // Private member is only accessible within a function
 	// Data Members or Fields
 	double height;
 	double width;
+
+}; // end of the class Rectangle
+
+#endif 
+
+#ifndef ITEMFREQUENCIES_H
+#define ITEMFREQUENCIES_H
+
+class ItemFrequencies {
+public:
+
+	// Member functions
+
+	// Setter functions sets fields in private
+	void getItem(string item);
+
+	// Getter functions access fields in private
+	void getItemFrequncyList() const;
+
+
+private: // Private member is only accessible within a function
+	// Data Members or Fields
+	vector<string> itemList;
+	vector<int> itemFrequency;
 
 }; // end of the class Rectangle
 

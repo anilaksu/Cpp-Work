@@ -226,8 +226,39 @@ int main() {
 	{
 		delete rect;
 	}
-	Rectangles.clear();
+	Rectangles.clear(); // This is how we destroy vector pointers
 
+	/*
+		Mini Project: Shopping Item File
+			- Read a list of items from shopping.txt
+			- Items can occur more than once throughout the file
+			- When you are done, you should print the item name and the corresponding frequency of the item 
+	*/
+
+	ifstream shoppingFile;					// For reading shopping list file
+	ItemFrequencies Items;					// ItemFrequencies pointer to for dummy variable
+	string item;                            // Dummy variable for items in the file 
+
+	shoppingFile.open("shopping.txt");		// Here we open the shopping file
+
+	// Here we check if these files exists
+	if (!shoppingFile)
+	{
+		cout << "Problem opening shopping list file!" << endl;
+		return 1;
+	}
+
+	cout << "We are reading  shopping list file!" << endl;
+	while (!shoppingFile.eof())
+	{
+		shoppingFile >> item;  // Items from the list
+		Items.getItem(item);   // Here we add a new item from the shopping list
+	}
+
+	// Here output the shopping list
+	Items.getItemFrequncyList();
+
+	shoppingFile.close();
 
 	return 0;
 }
