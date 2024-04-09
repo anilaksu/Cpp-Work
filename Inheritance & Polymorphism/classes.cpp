@@ -55,7 +55,37 @@ string Dog::makeNoise() const
 	return "Whoa Whoa!";
 }
 
+string Dog::eat() const
+{
+	return "I love dog food!";
+}
+
 void Dog::chaseCat() const
 {
 	cout << "Here, kitty kitty!" << endl;
+}
+
+void Dog::chaseMouse() const
+{
+	cout << "I don't chase a mouse, I chase cats!" << endl;
+}
+
+// Constructor for the derived class cat
+Cat::Cat(string name, double weight) : Animal(name, weight) // Here we import base class constructor
+{
+}
+
+string Cat::eat() const
+{
+	return "I love eating mouse!";
+}
+
+void Cat::chaseMouse() const
+{
+	cout << "I am chasing a mouse!" << endl;
+}
+
+string Cat::makeNoise() const
+{
+	return "Meow!";
 }
