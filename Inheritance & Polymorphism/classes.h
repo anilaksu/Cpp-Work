@@ -92,14 +92,75 @@ public:
 	// Setter functions
 	void setName(string name);
 	void setRace(race Race);
-	void setHitPoints();
-	void setMagicPoints();
+	void setHitPoints(int hitPoints);
+	void setMagicPoints(int magicPoints);
 
 
 private:
 	string name;
-	double weight;
-	string noise{ "unknown noise" };
+	race Race;
+	int hitPoints;
+	int magicPoints;
 };
 
 #endif // End of Character Class
+
+#ifndef WARRIOR_H
+#define WARRIOR_H
+
+class Warrior : public Character
+{
+public:
+	Warrior(string name, race Race) : Character(name, Race, 200, 0) // Constructor for Warrior Class
+	{
+	}
+
+	// Getter functions
+	string attack() const // It is now a getter function
+	{
+		return "I will destroy you with my sword, foul demon!";
+	}
+
+};
+
+#endif // End of Warrior Class
+
+#ifndef PRIEST_H
+#define PRIEST_H
+
+class Priest : public Character
+{
+public:
+	Priest(string name, race Race) : Character(name, Race, 100, 200) // Constructor for Warrior Class
+	{
+	}
+
+	// Getter functions
+	string attack() const // It is now a getter function
+	{
+		return "I will assault you with Holy Wrath!";
+	}
+
+};
+
+#endif // End of Priest Class
+
+#ifndef MAGE_H
+#define MAGE_H
+
+class Mage : public Character
+{
+public:
+	Mage(string name, race Race) : Character(name, Race, 150, 150) // Constructor for Warrior Class
+	{
+	}
+
+	// Getter functions
+	string attack() const // It is now a getter function
+	{
+		return "I will crush you with the power of my arcane missiles!";
+	}
+
+};
+
+#endif // End of Mage Class

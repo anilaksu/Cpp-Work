@@ -7,10 +7,19 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "classes.h"
 
 using namespace std;
 
+void printMainMenu();
+void printRaceMenu();
+
+Character* createPlayer(string playerName, int typeNum, int raceNum);
+void doCleanup(vector<Character*> playerList);
+
+race getRace(int raceNum);
+void printAll(vector<Character*> playerList);
 
 
 int main()
@@ -147,7 +156,114 @@ int main()
 				- Their attack method returns, "I will crush you with the power of my arcane missiles!"
 	*/
 	
+	int choice;
+	int raceNum;
+	string characterName;
+
+	vector <Character*> playerList;
+
+	printMainMenu();
+	cin >> choice;
+	cin.get(); // consume new line
+
+	while (choice != 0)
+	{
+		cout << "What would you like to name your character?" << endl;
+		getline(cin, characterName);
+
+		printRaceMenu();
+		cin >> raceNum;
+		cin.get();
+
+		Character* tempPlayer = createPlayer(characterName, choice, raceNum);
+		playerList.push_back(tempPlayer);
+
+		//---next round?
+		printMainMenu();
+		cin >> choice;
+		cin.get(); // consume new line
+
+	}
+
+	printAll(playerList);
+	doCleanup(playerList);
+
+	cout << "Program done!" << endl;
 
 	return 0;
+
+}
+
+
+void printMainMenu()
+{
+	cout << endl;
+	cout << "Which of the following would you like?" << endl;
+	cout << "\t1 - Create a Warrior" << endl;
+	cout << "\t2 - Create a Priest" << endl;
+	cout << "\t3 - Create a Mage" << endl;
+	cout << "\t0 - finish creating player characters" << endl;
+}
+
+void printRaceMenu()
+{
+	cout << "Now, which race do you want?" << endl;
+	cout << "\t1 - Human" << endl;
+	cout << "\t2 - Elf" << endl;
+	cout << "\t3 - Dwarf" << endl;
+	cout << "\t4 - Orc" << endl;
+	cout << "\t5 - Troll" << endl;
+}
+
+Character* createPlayer(string playerName, int typeNum, int raceNum)
+{
+	race characterRace = getRace(raceNum);
+
+	Character* tempPlayer = nullptr;
+
+	if (typeNum == 1)
+		tempPlayer = new Warrior(playerName, characterRace);
+	else if (typeNum == 2)
+		tempPlayer = new Priest(playerName, characterRace);
+	else if (typeNum == 3)
+		tempPlayer = new Mage(playerName, characterRace);
+
+	return tempPlayer;
+
+}
+
+void doCleanup(vector<Character*> playerList) 
+{
+	for (Character* player : playerList)
+		delete player;
+
+	playerList.clear();
+}
+
+race getRace(int raceNum)
+{
+	race Race;
+
+	if (raceNum == 1)
+		Race = HUMAN;
+	else if (raceNum == 2)
+		Race = ELF;
+	else if (raceNum == 3)
+		Race = DWARF;
+	else if (raceNum == 4)
+		Race = ORC;
+	else if (raceNum == 5)
+		Race = TROLL;
+
+	return Race;
+}
+void printAll(vector<Character*> playerList) 
+{
+	for (Character* player : playerList)
+	{
+		cout << "I'm a " << player->whatRace() << " and my attack is : "
+			<< player->attack() << endl;
+	}
+		
 
 }
