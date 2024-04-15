@@ -8,10 +8,10 @@ using namespace std;
 #ifndef COMMISSION_H
 #define COMMUSION_H
 
-class CommisionEmployee
+class CommissionEmployee
 {
 	public:
-		CommisionEmployee(string firstName, string lastName, 
+		CommissionEmployee(string firstName, string lastName,
 			string socialSecurityNumber, double grossSales, double commissionRate); // Constructor for the base class Commision Employee
 
 		// Setter functions
@@ -29,7 +29,7 @@ class CommisionEmployee
 		double getCommissionRate() const;
 
 		// Internal Operations using Class Data 
-		double earnings();
+		virtual  double earnings();
 
 	protected:
 		string firstName;
@@ -43,3 +43,39 @@ class CommisionEmployee
 
 
 #endif // !COMMISSION_H
+
+#ifndef BASEPLUS_H
+#define BASEPLUS_H
+
+class BasePlusCommssionEmployee : public CommissionEmployee
+{
+	public:
+		BasePlusCommssionEmployee(string firstName, string lastName,
+			string socialSecurityNumber, double grossSales, double commissionRate, double baseSalary) : CommissionEmployee(firstName, lastName, socialSecurityNumber
+				, grossSales, commissionRate)
+		{
+			this->baseSalary = baseSalary;
+		} // Constructor for Base Plus Commission Employee
+
+		// Setter Functions
+		void setBaseSalary(double baseSalary)
+		{
+			this->baseSalary = baseSalary;
+		}
+
+		// Getter Functions
+		double getBaseSalary() const {
+			return this->baseSalary;
+		}
+
+		// Modifier Functions
+		double earnings() const {
+			return this->commissionRate * this->grossSales + this->baseSalary;
+		}
+
+	private:
+		double baseSalary = 0.;
+};
+
+#endif // !BASEPLUS_H
+

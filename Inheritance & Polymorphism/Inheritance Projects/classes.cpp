@@ -2,8 +2,8 @@
 
 #include "classes.h"
 
-// 
-CommisionEmployee::CommisionEmployee(string firstName, string lastName,
+// Constructor for CommisionEmployee Class
+CommissionEmployee::CommissionEmployee(string firstName, string lastName,
 	string socialSecurityNumber, double grossSales, double commissionRate)
 {
 	this->firstName = firstName;
@@ -14,20 +14,20 @@ CommisionEmployee::CommisionEmployee(string firstName, string lastName,
 }
 
 // Setter functions
-void CommisionEmployee::setFirstName(string firstName)
+void CommissionEmployee::setFirstName(string firstName)
 {
 	this->firstName = firstName;
 }
 
-void CommisionEmployee::setLastName(string lastName) {
+void CommissionEmployee::setLastName(string lastName) {
 	this->lastName = lastName;
 }
 
-void CommisionEmployee::setSocialSecurityNumber(string lastName) {
+void CommissionEmployee::setSocialSecurityNumber(string lastName) {
 	this->socialSecurityNumber = socialSecurityNumber;
 }
 
-void CommisionEmployee::setGrossSales(double grossSales) {
+void CommissionEmployee::setGrossSales(double grossSales) {
 
 	if (grossSales < 0.)
 		throw invalid_argument("Gross Sales can not be less than 0!");
@@ -35,36 +35,36 @@ void CommisionEmployee::setGrossSales(double grossSales) {
 		this->grossSales = grossSales;
 }
 
-void CommisionEmployee::setCommissionRate(double commisionRate) {
+void CommissionEmployee::setCommissionRate(double commisionRate) {
 
-	if (commisionRate < 0.)
-		throw invalid_argument("Commision Rate can not be less than 0!");
+	if (commisionRate <= 0.&& commisionRate >1.)
+		throw invalid_argument("Commision Rate should be between 0 and 1!");
 	else
 		this->commissionRate = commissionRate;
 }
 
 // Getter functions
-string CommisionEmployee::getFirstName() const{
+string CommissionEmployee::getFirstName() const{
 	return this->firstName;
 }
 
-string CommisionEmployee::getLastName() const {
+string CommissionEmployee::getLastName() const {
 	return this->lastName;
 }
 
-string CommisionEmployee::getSocialSecurityNumber() const {
+string CommissionEmployee::getSocialSecurityNumber() const {
 	return this->socialSecurityNumber;
 }
 
-double CommisionEmployee::getGrossSales() const {
+double CommissionEmployee::getGrossSales() const {
 	return this->grossSales;
 }
 
-double CommisionEmployee::getCommissionRate() const {
+double CommissionEmployee::getCommissionRate() const {
 	return this->commissionRate;
 }
 
 // Internal Operations using Class Data 
-double CommisionEmployee::earnings() {
+double CommissionEmployee::earnings() {
 	return this->commissionRate * this->grossSales;
 }
