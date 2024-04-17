@@ -68,3 +68,71 @@ double CommissionEmployee::getCommissionRate() const {
 double CommissionEmployee::earnings() {
 	return this->commissionRate * this->grossSales;
 }
+
+
+// Constructor for CommisionEmployee Class
+Package::Package(string senderName, string recipientName, string senderAddress,
+	string recipientAddress, double weight, double costPerOunce)
+{
+	this->senderName = senderName;
+	this->recipientName = recipientName;
+	this->senderAddress = senderAddress;
+	this->recipientAddress = recipientAddress;
+	this->weight = weight;
+	this->costPerOunce = costPerOunce;
+}
+
+// Setter functions
+void Package::setSenderName(string senderName) {
+	this->senderName = senderName;
+}
+
+void Package::setRecipientName(string recipientName) {
+	this->recipientName = recipientName;
+}
+
+void Package::setSenderAddress(string senderAddress) {
+	this->senderAddress = senderAddress;
+}
+
+void Package::setRecipientAddress(string recipientAddress) {
+	this->recipientAddress = recipientAddress;
+}
+
+void Package::setWeight(double weight) {
+	this->weight = weight;
+}
+
+void Package::setCostPerOunce(double costPerOunce) {
+	this->costPerOunce = costPerOunce;
+}
+
+// Getter functions
+string Package::getSenderName() const {
+	return this->senderName;
+}
+
+string Package::getRecipientName() const {
+	return this->recipientName;
+}
+
+string Package::getSenderAddress() const {
+	return this->senderAddress;
+}
+
+string Package::getRecipientAddress() const {
+	return this->recipientAddress;
+}
+
+double Package::getWeight() const {
+	return this->weight;
+}
+
+double Package::getCostPerOunce() const {
+	return this->costPerOunce;
+}
+
+// Internal Operations using Class Data 
+double Package::totalCost() {
+	return this->weight * this->costPerOunce;
+}
