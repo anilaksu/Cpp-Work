@@ -65,6 +65,6 @@ double CommissionEmployee::getCommissionRate() const {
 }
 
 // Internal Operations using Class Data 
-double CommissionEmployee::earnings() {
+double CommissionEmployee::earnings() const {
 	return this->commissionRate * this->grossSales;
 }

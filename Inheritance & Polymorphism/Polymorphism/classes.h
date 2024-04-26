@@ -29,7 +29,7 @@ public:
 	double getCommissionRate() const;
 
 	// Internal Operations using Class Data 
-	virtual  double earnings();
+	virtual  double earnings() const;
 
 protected:
 	string firstName;
@@ -68,7 +68,7 @@ public:
 	}
 
 	// Modifier Functions
-	double earnings() const {
+	virtual double earnings() const override final {  // Here we override earnings function and declare it as final
 		return this->commissionRate * this->grossSales + this->baseSalary;
 	}
 
