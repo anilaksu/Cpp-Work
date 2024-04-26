@@ -251,7 +251,7 @@ public:
 	}
 
 	// Internal Operations using Class Data 
-	void debit(double debitAmount) {
+	virtual void debit(double debitAmount) {
 
 		double temporaryBalance = this->accountBalance - debitAmount;
 		try
@@ -267,7 +267,7 @@ public:
 		}
 	}
 
-	void credit(double creditAmount) {
+	virtual void credit(double creditAmount) {
 		this->accountBalance = this->accountBalance + creditAmount;
 	}
 
@@ -276,3 +276,91 @@ private:
 };
 
 #endif // !ACCOUNT_H
+
+#ifndef SAVINGS_H
+#define SAVINGS_H
+
+class SavingsAccount : public Account
+{
+public:
+	SavingsAccount(double accountBalance, double interestRate) :Account(accountBalance)
+	{
+		this->interestRate = interestRate;
+	}// Constructor for the derived class Overnight Package Package
+
+	// Setter functions
+	void setInterestRate(double interestRate)
+	{
+		this->interestRate = interestRate;
+	}
+	// Getter functions
+	double getInterestRate() const
+	{
+		return this->interestRate;
+	}
+
+	// Internal Operations using Class Data 
+	double calculateInterest()
+	{
+		return  this->interestRate * getAccountBalance();
+	}
+
+private:
+	double interestRate;
+
+};
+
+#endif // !SAVINGS_H
+
+#ifndef CHECKING_H
+#define CHECKING_H
+
+class CheckingAccount : public Account
+{
+public:
+	CheckingAccount(double accountBalance, double transactionFee) :Account(accountBalance)
+	{
+		this->transactionFee = transactionFee;
+	}// Constructor for the derived class Overnight Package Package
+
+	// Setter functions
+	void setTransactionFee(double transactionFee)
+	{
+		this->transactionFee = transactionFee;
+	}
+	// Getter functions
+	double getTransactionFee() const
+	{
+		return this->transactionFee;
+	}
+
+	// Internal Operations using Class Data 
+	void debit(double debitAmount) {
+
+		double temporaryBalance = getAccountBalance() - debitAmount - this->transactionFee; // Here we subtract transaction fee
+		try
+		{
+			processPositive(temporaryBalance);
+			cout << "We charged $" << this->transactionFee << " for you transaction" << endl;
+			setAccountBalance(temporaryBalance);
+		}
+		catch (const invalid_argument& err)
+		{
+			cout << err.what() << endl;
+			cin >> debitAmount; // Here we read the new account balance
+			debit(debitAmount);
+		}
+	}
+
+	virtual void credit(double creditAmount) {
+		double temporaryBalance = getAccountBalance() + creditAmount - this->transactionFee; // Here we subtract transaction fee
+		setAccountBalance(temporaryBalance);
+		cout << "We charged $" << this->transactionFee << " for you transaction" << endl;
+	}
+
+private:
+	double transactionFee;
+
+};
+
+#endif // !CHECKING_H

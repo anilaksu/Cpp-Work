@@ -36,6 +36,8 @@ int main()
 	// Account Hierarchy
 	double credit, debit;
 	Account myAccount(-100.0);
+	SavingsAccount mySavingsAccount(120.0, 0.05);
+	CheckingAccount myCheckingAccount(300.5, 2.0);
 
 	cout << "How much would you like to debit from your account?" << endl;
 	cin >> debit;
@@ -46,6 +48,16 @@ int main()
 	cin >> credit;
 	myAccount.credit(credit);
 	cout << "Your account has $" << myAccount.getAccountBalance() << " balance." << endl;
+
+	cout << "How much would you like to credit to your savings account?" << endl;
+	cin >> credit;
+	mySavingsAccount.credit(credit);
+	cout << "Your savings account returned $" << mySavingsAccount.calculateInterest() << " interest." << endl;
+
+	cout << "How much would you like to debit to your savings account?" << endl;
+	cin >> debit;
+	myCheckingAccount.debit(debit);
+	cout << "Your account has $" << myCheckingAccount.getAccountBalance() << " balance." << endl;
 
 	return 0;
 }
