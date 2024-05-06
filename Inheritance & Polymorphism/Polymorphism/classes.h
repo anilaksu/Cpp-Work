@@ -5,43 +5,101 @@
 
 using namespace std;
 
-#ifndef COMMISSION_H
-#define COMMUSION_H
+#ifndef EMPLOYEE_H
+#define EMPLOYEE_H
 
-class CommissionEmployee
+class Employee
 {
 public:
-	CommissionEmployee(string firstName, string lastName,
-		string socialSecurityNumber, double grossSales, double commissionRate); // Constructor for the base class Commision Employee
+	Employee(string firstName, string lastName, 
+		string socialSecurityNumber, double grossSales); // Constructor for the base abstract class Employee
 
 	// Setter functions
-	void setFirstName(string firstName);
-	void setLastName(string lastName);
-	void setSocialSecurityNumber(string lastName);
-	void setGrossSales(double grossSales);
-	void setCommissionRate(double commisionRate);
+	virtual void setFirstName(string firstName) final;			// This is the final version of the set first name function
+	virtual void setLastName(string lastName) final;			// This is the final version of the set last name function
+	virtual void setSocialSecurityNumber(string lastName) final; // This is the final version of the set social security function
+	virtual void setGrossSales(double grossSales) final;
 
 	// Getter functions
-	string getFirstName() const;
-	string getLastName() const;
-	string getSocialSecurityNumber() const;
-	double getGrossSales() const;
-	double getCommissionRate() const;
+	virtual string getFirstName() const final;               // This is the final version of the get first name function
+	virtual string getLastName() const final;				 // This is the final version of the get last name function
+	virtual string getSocialSecurityNumber() const;          // This is the final version of the get social security function
+	virtual double getGrossSales() const;                    // This is the final version of the get gross sales function    
 
 	// Internal Operations using Class Data 
-	virtual  double earnings() const;
+	virtual  double earnings() const = 0;            // This is the pure virtual function to be defined in every level of the hierarchy
 
 protected:
 	string firstName;
 	string lastName;
 	string socialSecurityNumber;
 	double grossSales;
-	double commissionRate;
-
 
 };
 
+#endif // !EMPLOYEE_H
+
+#ifndef COMMISSION_H
+#define COMMUSION_H
+
+class CommissionEmployee : public Employee
+{
+public:
+	CommissionEmployee(string firstName, string lastName,
+		string socialSecurityNumber, double grossSales, double commissionRate) : Employee(firstName, lastName, socialSecurityNumber
+			, grossSales)
+	{
+		this->commissionRate = commissionRate;
+	} // Constructor for Commission Employee
+
+	// Setter functions
+	void setCommissionRate(double commisionRate);
+
+	// Getter functions
+	double getCommissionRate() const;
+
+	// Internal Operations using Class Data 
+	virtual  double earnings() const;
+
+protected:
+	double commissionRate;
+};
+
 #endif // !COMMISSION_H
+
+#ifndef SALARIED_H
+#define SALARIED_H
+
+class SalariedEmployee : public Employee
+{
+public:
+	SalariedEmployee(string firstName, string lastName,
+		string socialSecurityNumber, double grossSales, double salary) : Employee(firstName, lastName, socialSecurityNumber
+			, grossSales)
+	{
+		this->salary = salary;
+	} // Constructor for Commission Employee
+
+	// Setter functions
+	void setSalary(double salary) {
+		this->salary = salary;
+	}
+
+	// Getter functions
+	double getSalary() const {
+		return this->salary;
+	}
+
+	// Internal Operations using Class Data 
+	virtual  double earnings() const override {
+		return this->salary;
+	}
+
+protected:
+	double salary;
+};
+
+#endif // !SALARIED_H
 
 #ifndef BASEPLUS_H
 #define BASEPLUS_H

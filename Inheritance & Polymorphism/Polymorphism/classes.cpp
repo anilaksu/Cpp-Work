@@ -2,32 +2,31 @@
 
 #include "classes.h"
 
-// Constructor for CommisionEmployee Class
-CommissionEmployee::CommissionEmployee(string firstName, string lastName,
-	string socialSecurityNumber, double grossSales, double commissionRate)
+// Constructor for Employee Class
+Employee::Employee(string firstName, string lastName,
+	string socialSecurityNumber, double grossSales)
 {
 	this->firstName = firstName;
 	this->lastName = lastName;
 	this->socialSecurityNumber = socialSecurityNumber;
 	this->grossSales = grossSales;
-	this->commissionRate = commissionRate;
 }
 
 // Setter functions
-void CommissionEmployee::setFirstName(string firstName)
+void Employee::setFirstName(string firstName)
 {
 	this->firstName = firstName;
 }
 
-void CommissionEmployee::setLastName(string lastName) {
+void Employee::setLastName(string lastName) {
 	this->lastName = lastName;
 }
 
-void CommissionEmployee::setSocialSecurityNumber(string lastName) {
+void Employee::setSocialSecurityNumber(string lastName) {
 	this->socialSecurityNumber = socialSecurityNumber;
 }
 
-void CommissionEmployee::setGrossSales(double grossSales) {
+void Employee::setGrossSales(double grossSales) {
 
 	if (grossSales < 0.)
 		throw invalid_argument("Gross Sales can not be less than 0!");
@@ -35,6 +34,24 @@ void CommissionEmployee::setGrossSales(double grossSales) {
 		this->grossSales = grossSales;
 }
 
+// Getter functions
+string Employee::getFirstName() const {
+	return this->firstName;
+}
+
+string Employee::getLastName() const {
+	return this->lastName;
+}
+
+string Employee::getSocialSecurityNumber() const {
+	return this->socialSecurityNumber;
+}
+
+double Employee::getGrossSales() const {
+	return this->grossSales;
+}
+
+// Commission Employee Setter Functions
 void CommissionEmployee::setCommissionRate(double commisionRate) {
 
 	if (commisionRate <= 0. && commisionRate > 1.)
@@ -43,23 +60,7 @@ void CommissionEmployee::setCommissionRate(double commisionRate) {
 		this->commissionRate = commissionRate;
 }
 
-// Getter functions
-string CommissionEmployee::getFirstName() const {
-	return this->firstName;
-}
-
-string CommissionEmployee::getLastName() const {
-	return this->lastName;
-}
-
-string CommissionEmployee::getSocialSecurityNumber() const {
-	return this->socialSecurityNumber;
-}
-
-double CommissionEmployee::getGrossSales() const {
-	return this->grossSales;
-}
-
+// Commission Employee Getter Functions
 double CommissionEmployee::getCommissionRate() const {
 	return this->commissionRate;
 }
