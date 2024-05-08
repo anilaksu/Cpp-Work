@@ -8,6 +8,8 @@ using namespace std;
 #ifndef EMPLOYEE_H
 #define EMPLOYEE_H
 
+enum employeeType { Salaried, Commission, BasePlus};
+
 class Employee
 {
 public:
