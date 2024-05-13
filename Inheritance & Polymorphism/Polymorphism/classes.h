@@ -106,10 +106,10 @@ protected:
 #ifndef BASEPLUS_H
 #define BASEPLUS_H
 
-class BasePlusCommssionEmployee : public CommissionEmployee
+class BasePlusCommissionEmployee : public CommissionEmployee
 {
 public:
-	BasePlusCommssionEmployee(string firstName, string lastName,
+	BasePlusCommissionEmployee(string firstName, string lastName,
 		string socialSecurityNumber, double grossSales, double commissionRate, double baseSalary) : CommissionEmployee(firstName, lastName, socialSecurityNumber
 			, grossSales, commissionRate)
 	{
