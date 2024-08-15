@@ -9,6 +9,9 @@
 #include<iostream>
 #include<string>
 #include<deque> // It allows us to use STL and containers
+#include<stack> // Differing from deque, you can only access the element in the front
+#include<queue> // It allows us to use queue data structure
+#include<map>   // It allows to use dictionaries 
 #include "swapper.h"
 
 using namespace std;
@@ -19,6 +22,10 @@ template <class T>
 T getSmaller(T a, T b);
 
 void printDeque(deque<int> deck);
+// Palindrome functions
+void storeReverse(string origString, stack<char>& reverseStack);
+bool isPalindrome(string origString);
+void printResult(string origString);
 
 int main() {
 
@@ -98,6 +105,63 @@ int main() {
 
 	printDeque(myDeck);
 
+	/*
+		Stack Function: Differing from deque, you can only access the element in the front
+		We check if a stack is a palindrome
+	*/
+
+	string myPalindrome;
+
+	cout << "Please enter a palindrome" << endl;
+	cin >> myPalindrome;
+
+	printResult(myPalindrome); // Here we check if it is a palindrome
+
+	/*
+		Queue project:
+			- Use the <queue> library
+			- Queues are first-in, first-out
+			- Use "push" and "pop" methods for adding and removing
+			- Use front to obtain the next element to deque from the queue (Hint: use empty() method)
+	*/
+
+	queue<string> myQueue;
+	string myName;
+	bool add = true;
+	char doContinue = 'Y';
+
+	cout << "Queue project: Queue of Names" << endl;
+
+	// Here we input our names
+	while (add)
+	{
+		cout << "Please enter a name" << endl;
+		cin >> myName;
+
+		myQueue.push(myName);
+
+		cout << "Do you wanna continue? (Y/N)" << endl;
+		cin >> doContinue;
+		add = (doContinue == 'Y') ? true : false;
+
+	}
+
+	// Here we output our names
+	while (!myQueue.empty())
+	{
+		cout << myQueue.front() << endl; // Here we output the name
+		myQueue.pop();				     // Here we clear the element on the top
+	}
+		
+	/*
+		Maps:
+			- Also known as dictionaries
+			- Data struncture representing key/value pairs
+	*/
+
+	map<string, string> contacts; // Here we create our phone book
+
+	contacts["Mahmut Ceylan"] = 313 - 555 - 5555;
 
 	return 0;
 }
@@ -131,4 +195,43 @@ void printDeque(deque<int> deck) {
 		cout << num << endl;
 	}
 	cout << endl;
+}
+
+// This function stores the reverse string
+void storeReverse(string origString, stack<char>& reverseStack)
+{
+	for (auto character : origString)
+		reverseStack.push(character);
+}
+
+// This function checks if a given string is a palindrom or not
+bool isPalindrome(string origString) 
+{
+	stack<char> reverseStack;
+	bool result = true;
+
+	storeReverse(origString, reverseStack);
+
+	for (auto character : origString)
+	{
+		if (character != reverseStack.top())
+		{
+			result = false;
+			break;
+		}
+
+		reverseStack.pop(); // Here we remove the top element in the reversed stack
+	}
+		
+
+	return result;
+}
+
+// This function returns the check of palindrome
+void printResult(string origString) {
+
+	if (isPalindrome(origString))
+		cout << "Yes, it is a palindrome.\n" << endl;
+	else
+		cout << "No, it is not a palindrome.\n" << endl;
 }
