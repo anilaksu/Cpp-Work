@@ -12,6 +12,7 @@
 #include<stack> // Differing from deque, you can only access the element in the front
 #include<queue> // It allows us to use queue data structure
 #include<map>   // It allows to use dictionaries 
+#include<algorithm> // It allows to use STL algorithms
 #include "swapper.h"
 
 using namespace std;
@@ -26,6 +27,10 @@ void printDeque(deque<int> deck);
 void storeReverse(string origString, stack<char>& reverseStack);
 bool isPalindrome(string origString);
 void printResult(string origString);
+// STL algorithm function templates
+void fillVector(vector<int>& myVector, size_t size);
+void printVector(const vector<int>& myVector);
+void countFives(const vector<int>& myVector);
 
 int main() {
 
@@ -159,9 +164,34 @@ int main() {
 			- Data struncture representing key/value pairs
 	*/
 
+
 	map<string, string> contacts; // Here we create our phone book
 
-	contacts["Mahmut Ceylan"] = 313 - 555 - 5555;
+	contacts["Mahmut Ceylan"] = "313 - 555 - 5555";
+	contacts["Bob Robinson"] = "734 - 555 - 5555";
+	contacts["Anil Aksu"] = "313 - 555 - 5555";
+
+	// Here we output our library
+	for (pair<string, string> element : contacts) // Here we could also use auto instead of pair<string, string>
+		cout << element.first << " has a phone number: " << element.second << endl;
+
+	/*
+		Algoritm library in STL: include<algorithm>
+			- Count algorithm
+			- Replace algorithm
+	*/
+
+	size_t size = 20;
+	vector<int> myVector;
+
+	fillVector(myVector, size);
+	printVector(myVector);
+	countFives(myVector);								// Counting fives 
+	replace(myVector.begin(), myVector.end(), 5, 99);   // Replacing fives with 99s
+	printVector(myVector);
+	cout << " Sorted Vector " << endl;
+	sort(myVector.begin(), myVector.end());   // Sorts our vector
+	printVector(myVector);
 
 	return 0;
 }
@@ -234,4 +264,29 @@ void printResult(string origString) {
 		cout << "Yes, it is a palindrome.\n" << endl;
 	else
 		cout << "No, it is not a palindrome.\n" << endl;
+}
+
+// Fill our vector with random numbers at a given size
+void fillVector(vector<int>& myVector, size_t size) {
+	// seed 
+	srand(time(nullptr));
+	int temp;
+
+	for (int i = 0; i < size; i++)
+	{
+		temp = rand() % 5 + 1; //[1-5]
+		myVector.push_back(temp);
+	}
+}
+
+// Print our vector
+void printVector(const vector<int>& myVector) {
+	for (auto element : myVector)
+		cout << element << endl;
+}
+
+// 
+void countFives(const vector<int>& myVector) {
+	int numFives = count(myVector.begin(), myVector.end(), 5);
+	cout << "Number of fives: " << numFives << endl;
 }
