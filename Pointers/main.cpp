@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <string>
+#include<memory> // Allows us to use smart pointers
 #include "classes.h"
 
 using namespace std;
@@ -188,6 +189,35 @@ int main()
 		delete circlePtrs[i];
 		circlePtrs[i] = nullptr;
 	}
+
+	/*
+		Smart Pointers (also called Managed Pointers):
+			- Introduced in the C++ 11 Standard
+			- Syntactically, they have similarities to raw pointers
+			- Manage their own memory! (no delete necessary!)
+		* Three types:
+			- unique_ptr: sole owner of allocated memort
+				+ No two unique_ptrs can point to the same allocated memory
+				+ Most common type
+			- shared_ptr: shares ownership of allocated memory
+				+ Multiple shared_ptrs can point to the same allocated memory
+				+ A count is maintained - when it reaches 0, the memory is deallocated
+			- weak_ptr: doesn't own memory it points to
+				+ Used in some special circumstances
+	*/
+
+	unique_ptr<double> myDubPtr = make_unique<double>();
+	auto myArray = make_unique<int[]>(ARR_SIZE);
+
+	*myDubPtr = 3.14;
+	cout << "pointer value: " << *myDubPtr << endl;
+
+
+	for (int i = 0; i < ARR_SIZE; i++)
+		myArray[i] = i * 2;
+
+	for (int i = 0; i < ARR_SIZE; i++)
+		cout << myArray[i] << endl;
 
 	return 0;
 }
